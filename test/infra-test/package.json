@@ -1,0 +1,16 @@
+{
+  "name": "infra-test",
+  "private": true,
+  "version": "0.0.1",
+  "devDependencies": {
+    "jest": "^29.0.1"
+  },
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "prettier": {
+    "endOfLine": "lf",
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}

@@ -1,0 +1,353 @@
+scalar BigInt
+
+"""
+Boolean expression comparing fields on type "BigInt"
+"""
+input BigIntFilter {
+  eq: BigInt
+  gt: BigInt
+  gte: BigInt
+  in: [BigInt!]
+  lt: BigInt
+  lte: BigInt
+  neq: BigInt
+}
+
+"""
+Boolean expression comparing fields on type "Boolean"
+"""
+input BooleanFilter {
+  eq: Boolean
+  gt: Boolean
+  gte: Boolean
+  in: [Boolean!]
+  lt: Boolean
+  lte: Boolean
+  neq: Boolean
+}
+
+scalar Cursor
+
+scalar Date
+
+"""
+Boolean expression comparing fields on type "Date"
+"""
+input DateFilter {
+  eq: Date
+  gt: Date
+  gte: Date
+  in: [Date!]
+  lt: Date
+  lte: Date
+  neq: Date
+}
+
+scalar Datetime
+
+"""
+Boolean expression comparing fields on type "Datetime"
+"""
+input DatetimeFilter {
+  eq: Datetime
+  gt: Datetime
+  gte: Datetime
+  in: [Datetime!]
+  lt: Datetime
+  lte: Datetime
+  neq: Datetime
+}
+
+"""
+Boolean expression comparing fields on type "Float"
+"""
+input FloatFilter {
+  eq: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  neq: Float
+}
+
+"""
+Boolean expression comparing fields on type "Int"
+"""
+input IntFilter {
+  eq: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  neq: Int
+}
+
+scalar JSON
+
+"""
+Boolean expression comparing fields on type "JSON"
+"""
+input JSONFilter {
+  eq: JSON
+  neq: JSON
+}
+
+"""The root type for creating and mutating data"""
+type Mutation {
+  """Deletes zero or more records from the collection"""
+  deleteFromTeamsCollection(
+    """Restricts the mutation's impact to records matching the critera"""
+    filter: TeamsFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): TeamsDeleteResponse!
+
+  """Adds one or more `TeamsInsertResponse` records to the collection"""
+  insertIntoTeamsCollection(objects: [TeamsInsertInput!]!): TeamsInsertResponse
+
+  """Updates zero or more records in the collection"""
+  updateTeamsCollection(
+    """
+    Fields that are set will be updated for all records matching the `filter`
+    """
+    set: TeamsUpdateInput!
+
+    """Restricts the mutation's impact to records matching the critera"""
+    filter: TeamsFilter
+
+    """
+    The maximum number of records in the collection permitted to be affected
+    """
+    atMost: Int! = 1
+  ): TeamsUpdateResponse!
+}
+
+"""Defines a per-field sorting order"""
+enum OrderByDirection {
+  """Ascending order, nulls first"""
+  AscNullsFirst
+
+  """Ascending order, nulls last"""
+  AscNullsLast
+
+  """Descending order, nulls first"""
+  DescNullsFirst
+
+  """Descending order, nulls last"""
+  DescNullsLast
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+}
+
+"""The root type for querying data"""
+type Query {
+  """A pagable collection of type `Teams`"""
+  teamsCollection(
+    """Query the first `n` records in the collection"""
+    first: Int
+
+    """Query the last `n` records in the collection"""
+    last: Int
+
+    """Query values in the collection before the provided cursor"""
+    before: Cursor
+
+    """Query values in the collection after the provided cursor"""
+    after: Cursor
+
+    """Filters to apply to the results set when querying from the collection"""
+    filter: TeamsFilter
+
+    """Sort order to apply to the collection"""
+    orderBy: [TeamsOrderBy!]
+  ): TeamsConnection
+}
+
+"""
+Boolean expression comparing fields on type "String"
+"""
+input StringFilter {
+  eq: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  neq: String
+}
+
+type Teams {
+  nullableString: String
+  boolEmptyDefault: Boolean!
+  boolKnownDefault: Boolean!
+  stringKnownDefault: String!
+  nullableBool: Boolean
+  nullableBoolEmptyDefault: Boolean
+  nullableBoolKnownDefault: Boolean
+  nullableStringKnownDefault: String
+  nullableStringRandomDefault: String
+  name: String!
+  stringRandomDefault: String!
+  stringEmptyDefault: String!
+  nullableStringEmptyDefault: String
+  intEmptyDefault: BigInt!
+  intKnownDefault: BigInt!
+  nullableInt: BigInt
+  nullableIntEmptyDefault: BigInt
+  nullableIntKnownDefault: BigInt
+}
+
+type TeamsConnection {
+  edges: [TeamsEdge!]!
+  pageInfo: PageInfo!
+}
+
+type TeamsDeleteResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [Teams!]!
+}
+
+type TeamsEdge {
+  cursor: String!
+  node: Teams!
+}
+
+input TeamsFilter {
+  nullableString: StringFilter
+  boolEmptyDefault: BooleanFilter
+  boolKnownDefault: BooleanFilter
+  stringKnownDefault: StringFilter
+  nullableBool: BooleanFilter
+  nullableBoolEmptyDefault: BooleanFilter
+  nullableBoolKnownDefault: BooleanFilter
+  nullableStringKnownDefault: StringFilter
+  nullableStringRandomDefault: StringFilter
+  name: StringFilter
+  stringRandomDefault: StringFilter
+  stringEmptyDefault: StringFilter
+  nullableStringEmptyDefault: StringFilter
+  intEmptyDefault: BigIntFilter
+  intKnownDefault: BigIntFilter
+  nullableInt: BigIntFilter
+  nullableIntEmptyDefault: BigIntFilter
+  nullableIntKnownDefault: BigIntFilter
+}
+
+input TeamsInsertInput {
+  nullableString: String
+  boolEmptyDefault: Boolean
+  boolKnownDefault: Boolean
+  stringKnownDefault: String
+  nullableBool: Boolean
+  nullableBoolEmptyDefault: Boolean
+  nullableBoolKnownDefault: Boolean
+  nullableStringKnownDefault: String
+  nullableStringRandomDefault: String
+  name: String
+  stringRandomDefault: String
+  stringEmptyDefault: String
+  nullableStringEmptyDefault: String
+  intEmptyDefault: BigInt
+  intKnownDefault: BigInt
+  nullableInt: BigInt
+  nullableIntEmptyDefault: BigInt
+  nullableIntKnownDefault: BigInt
+}
+
+type TeamsInsertResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [Teams!]!
+}
+
+input TeamsOrderBy {
+  nullableString: OrderByDirection
+  boolEmptyDefault: OrderByDirection
+  boolKnownDefault: OrderByDirection
+  stringKnownDefault: OrderByDirection
+  nullableBool: OrderByDirection
+  nullableBoolEmptyDefault: OrderByDirection
+  nullableBoolKnownDefault: OrderByDirection
+  nullableStringKnownDefault: OrderByDirection
+  nullableStringRandomDefault: OrderByDirection
+  name: OrderByDirection
+  stringRandomDefault: OrderByDirection
+  stringEmptyDefault: OrderByDirection
+  nullableStringEmptyDefault: OrderByDirection
+  intEmptyDefault: OrderByDirection
+  intKnownDefault: OrderByDirection
+  nullableInt: OrderByDirection
+  nullableIntEmptyDefault: OrderByDirection
+  nullableIntKnownDefault: OrderByDirection
+}
+
+input TeamsUpdateInput {
+  nullableString: String
+  boolEmptyDefault: Boolean
+  boolKnownDefault: Boolean
+  stringKnownDefault: String
+  nullableBool: Boolean
+  nullableBoolEmptyDefault: Boolean
+  nullableBoolKnownDefault: Boolean
+  nullableStringKnownDefault: String
+  nullableStringRandomDefault: String
+  name: String
+  stringRandomDefault: String
+  stringEmptyDefault: String
+  nullableStringEmptyDefault: String
+  intEmptyDefault: BigInt
+  intKnownDefault: BigInt
+  nullableInt: BigInt
+  nullableIntEmptyDefault: BigInt
+  nullableIntKnownDefault: BigInt
+}
+
+type TeamsUpdateResponse {
+  """Count of the records impacted by the mutation"""
+  affectedCount: Int!
+
+  """Array of records impacted by the mutation"""
+  records: [Teams!]!
+}
+
+scalar Time
+
+"""
+Boolean expression comparing fields on type "Time"
+"""
+input TimeFilter {
+  eq: Time
+  gt: Time
+  gte: Time
+  in: [Time!]
+  lt: Time
+  lte: Time
+  neq: Time
+}
+
+scalar UUID
+
+"""
+Boolean expression comparing fields on type "UUID"
+"""
+input UUIDFilter {
+  eq: UUID
+  in: [UUID!]
+  neq: UUID
+}
+

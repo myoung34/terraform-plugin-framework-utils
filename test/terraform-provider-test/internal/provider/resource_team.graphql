@@ -1,0 +1,77 @@
+# @genqlient(for: "Teams.nullableBool", pointer: true)
+# @genqlient(for: "Teams.nullableBoolEmptyDefault", pointer: true)
+# @genqlient(for: "Teams.nullableBoolKnownDefault", pointer: true)
+# @genqlient(for: "Teams.nullableString", pointer: true)
+# @genqlient(for: "Teams.nullableStringEmptyDefault", pointer: true)
+# @genqlient(for: "Teams.nullableStringKnownDefault", pointer: true)
+# @genqlient(for: "Teams.nullableStringRandomDefault", pointer: true)
+fragment Team on Teams {
+  name
+  boolEmptyDefault
+  boolKnownDefault
+  nullableBool
+  nullableBoolEmptyDefault
+  nullableBoolKnownDefault
+  stringEmptyDefault
+  stringKnownDefault
+  stringRandomDefault
+  nullableString
+  nullableStringEmptyDefault
+  nullableStringKnownDefault
+  nullableStringRandomDefault
+}
+
+query getTeam($name: String!) {
+  teamsCollection(filter: { name: { eq: $name } }) {
+    edges {
+      node {
+        ...Team
+      }
+    }
+  }
+}
+
+# @genqlient(for: "TeamsInsertInput.name", omitempty: true)
+# @genqlient(for: "TeamsInsertInput.nullableBool", pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableBoolEmptyDefault", pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableBoolKnownDefault", pointer: true)
+# @genqlient(for: "TeamsInsertInput.stringRandomDefault", omitempty: true, pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableString", pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableStringEmptyDefault", pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableStringKnownDefault", pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableStringRandomDefault", omitempty: true, pointer: true)
+mutation createTeam(
+  $input: TeamsInsertInput!
+) {
+  insertIntoTeamsCollection(objects: [$input]) {
+    records {
+      ...Team
+    }
+  }
+}
+
+# @genqlient(for: "TeamsUpdateInput.name", omitempty: true)
+# @genqlient(for: "TeamsUpdateInput.nullableBool", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableBoolEmptyDefault", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableBoolKnownDefault", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.stringRandomDefault", omitempty: true, pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableString", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableStringEmptyDefault", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableStringKnownDefault", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableStringRandomDefault", omitempty: true, pointer: true)
+mutation updateTeam(
+  $input: TeamsUpdateInput!,
+  $name: String!
+) {
+  updateTeamsCollection(set: $input, filter: { name: { eq: $name } }) {
+    records {
+      ...Team
+    }
+  }
+}
+
+mutation deleteTeam($name: String!) {
+  deleteFromTeamsCollection(filter: { name: { eq: $name } }) {
+    affectedCount
+  }
+}

@@ -1,0 +1,336 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`string_random_default 1`] = `
+"
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # test_team.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "test_team" "default" {
+      [32m+[0m [0m[1m[0mbool_empty_default[0m[0m             = false
+      [32m+[0m [0m[1m[0mbool_known_default[0m[0m             = true
+      [32m+[0m [0m[1m[0mid[0m[0m                             = "default"
+      [32m+[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = false
+      [32m+[0m [0m[1m[0mnullable_bool_known_default[0m[0m    = true
+      [32m+[0m [0m[1m[0mnullable_string_known_default[0m[0m  = "Two"
+      [32m+[0m [0m[1m[0mnullable_string_random_default[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mstring_known_default[0m[0m           = "One"
+      [32m+[0m [0m[1m[0mstring_random_default[0m[0m          = (known after apply)
+    }
+
+[0m[1mPlan:[0m 1 to add, 0 to change, 0 to destroy.
+[0m[0m[1mtest_team.default: Creating...[0m[0m
+[0m[1m[CLEANED] [id=default][0m
+[0m[1m[32m
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+[0m"
+`;
+
+exports[`string_random_default 2`] = `
+[
+  {
+    "instances": [
+      {
+        "attributes": {
+          "bool_empty_default": false,
+          "bool_known_default": true,
+          "id": "default",
+          "nullable_bool": null,
+          "nullable_bool_empty_default": false,
+          "nullable_bool_known_default": true,
+          "nullable_string": null,
+          "nullable_string_empty_default": "",
+          "nullable_string_known_default": "Two",
+          "nullable_string_random_default": "random value",
+          "string_empty_default": "",
+          "string_known_default": "One",
+          "string_random_default": "random value",
+        },
+        "schema_version": 0,
+        "sensitive_attributes": [],
+      },
+    ],
+    "mode": "managed",
+    "name": "default",
+    "provider": "provider["local/local/test"]",
+    "type": "test_team",
+  },
+]
+`;
+
+exports[`string_random_default 3`] = `
+"[0m[1mtest_team.default: Refreshing state... [id=default][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+[0m[1m[32m
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+[0m"
+`;
+
+exports[`string_random_default 4`] = `
+[
+  {
+    "instances": [
+      {
+        "attributes": {
+          "bool_empty_default": false,
+          "bool_known_default": true,
+          "id": "default",
+          "nullable_bool": null,
+          "nullable_bool_empty_default": false,
+          "nullable_bool_known_default": true,
+          "nullable_string": null,
+          "nullable_string_empty_default": "",
+          "nullable_string_known_default": "Two",
+          "nullable_string_random_default": "random value",
+          "string_empty_default": "",
+          "string_known_default": "One",
+          "string_random_default": "random value",
+        },
+        "schema_version": 0,
+        "sensitive_attributes": [],
+      },
+    ],
+    "mode": "managed",
+    "name": "default",
+    "provider": "provider["local/local/test"]",
+    "type": "test_team",
+  },
+]
+`;
+
+exports[`string_random_default 5`] = `
+"[0m[1mtest_team.default: Refreshing state... [id=default][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [33m~[0m update in-place
+[0m
+Terraform will perform the following actions:
+
+[1m  # test_team.default[0m will be updated in-place[0m[0m
+[0m  [33m~[0m[0m resource "test_team" "default" {
+        [1m[0mid[0m[0m                             = "default"
+      [31m-[0m [0m[1m[0mstring_random_default[0m[0m          = "random value" [90m->[0m [0m[90mnull[0m[0m
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.
+[0m[0m[1mtest_team.default: Modifying... [id=default][0m[0m
+[0m[1m[CLEANED] [id=default][0m
+[0m[1m[32m
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+[0m"
+`;
+
+exports[`string_random_default 6`] = `
+[
+  {
+    "instances": [
+      {
+        "attributes": {
+          "bool_empty_default": false,
+          "bool_known_default": true,
+          "id": "default",
+          "nullable_bool": null,
+          "nullable_bool_empty_default": false,
+          "nullable_bool_known_default": true,
+          "nullable_string": null,
+          "nullable_string_empty_default": "",
+          "nullable_string_known_default": "Two",
+          "nullable_string_random_default": "random value",
+          "string_empty_default": "",
+          "string_known_default": "One",
+          "string_random_default": "",
+        },
+        "schema_version": 0,
+        "sensitive_attributes": [],
+      },
+    ],
+    "mode": "managed",
+    "name": "default",
+    "provider": "provider["local/local/test"]",
+    "type": "test_team",
+  },
+]
+`;
+
+exports[`string_random_default 7`] = `
+"[0m[1mtest_team.default: Refreshing state... [id=default][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+[0m[1m[32m
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+[0m"
+`;
+
+exports[`string_random_default 8`] = `
+[
+  {
+    "instances": [
+      {
+        "attributes": {
+          "bool_empty_default": false,
+          "bool_known_default": true,
+          "id": "default",
+          "nullable_bool": null,
+          "nullable_bool_empty_default": false,
+          "nullable_bool_known_default": true,
+          "nullable_string": null,
+          "nullable_string_empty_default": "",
+          "nullable_string_known_default": "Two",
+          "nullable_string_random_default": "random value",
+          "string_empty_default": "",
+          "string_known_default": "One",
+          "string_random_default": "",
+        },
+        "schema_version": 0,
+        "sensitive_attributes": [],
+      },
+    ],
+    "mode": "managed",
+    "name": "default",
+    "provider": "provider["local/local/test"]",
+    "type": "test_team",
+  },
+]
+`;
+
+exports[`string_random_default 9`] = `
+"[0m[1mtest_team.default: Refreshing state... [id=default][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [33m~[0m update in-place
+[0m
+Terraform will perform the following actions:
+
+[1m  # test_team.default[0m will be updated in-place[0m[0m
+[0m  [33m~[0m[0m resource "test_team" "default" {
+        [1m[0mid[0m[0m                             = "default"
+      [32m+[0m [0m[1m[0mstring_random_default[0m[0m          = "Three"
+        [90m# (7 unchanged attributes hidden)[0m[0m
+    }
+
+[0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.
+[0m[0m[1mtest_team.default: Modifying... [id=default][0m[0m
+[0m[1m[CLEANED] [id=default][0m
+[0m[1m[32m
+Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+[0m"
+`;
+
+exports[`string_random_default 10`] = `
+[
+  {
+    "instances": [
+      {
+        "attributes": {
+          "bool_empty_default": false,
+          "bool_known_default": true,
+          "id": "default",
+          "nullable_bool": null,
+          "nullable_bool_empty_default": false,
+          "nullable_bool_known_default": true,
+          "nullable_string": null,
+          "nullable_string_empty_default": "",
+          "nullable_string_known_default": "Two",
+          "nullable_string_random_default": "random value",
+          "string_empty_default": "",
+          "string_known_default": "One",
+          "string_random_default": "Three",
+        },
+        "schema_version": 0,
+        "sensitive_attributes": [],
+      },
+    ],
+    "mode": "managed",
+    "name": "default",
+    "provider": "provider["local/local/test"]",
+    "type": "test_team",
+  },
+]
+`;
+
+exports[`string_random_default 11`] = `
+"[0m[1mtest_team.default: Refreshing state... [id=default][0m
+
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
+
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
+[0m[1m[32m
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
+[0m"
+`;
+
+exports[`string_random_default 12`] = `
+[
+  {
+    "instances": [
+      {
+        "attributes": {
+          "bool_empty_default": false,
+          "bool_known_default": true,
+          "id": "default",
+          "nullable_bool": null,
+          "nullable_bool_empty_default": false,
+          "nullable_bool_known_default": true,
+          "nullable_string": null,
+          "nullable_string_empty_default": "",
+          "nullable_string_known_default": "Two",
+          "nullable_string_random_default": "random value",
+          "string_empty_default": "",
+          "string_known_default": "One",
+          "string_random_default": "Three",
+        },
+        "schema_version": 0,
+        "sensitive_attributes": [],
+      },
+    ],
+    "mode": "managed",
+    "name": "default",
+    "provider": "provider["local/local/test"]",
+    "type": "test_team",
+  },
+]
+`;
+
+exports[`string_random_default 13`] = `
+"[0m[1mtest_team.default: Refreshing state... [id=default][0m
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [31m-[0m destroy
+[0m
+Terraform will perform the following actions:
+
+[1m  # test_team.default[0m will be [1m[31mdestroyed[0m[0m
+[0m  [31m-[0m[0m resource "test_team" "default" {
+      [31m-[0m [0m[1m[0mbool_empty_default[0m[0m             = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mbool_known_default[0m[0m             = true [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mid[0m[0m                             = "default" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = false [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mnullable_bool_known_default[0m[0m    = true [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mnullable_string_known_default[0m[0m  = "Two" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mnullable_string_random_default[0m[0m = "random value" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstring_known_default[0m[0m           = "One" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstring_random_default[0m[0m          = "Three" [90m->[0m [0m[90mnull[0m[0m
+    }
+
+[0m[1mPlan:[0m 0 to add, 0 to change, 1 to destroy.
+[0m[0m[1mtest_team.default: Destroying... [id=default][0m[0m
+[0m[1m[CLEANED][0m
+[0m[1m[32m
+Destroy complete! Resources: 1 destroyed.
+[0m"
+`;
