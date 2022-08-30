@@ -4,13 +4,14 @@
 
 Assuming that we have a field of a certain type (`int`, `boolean`, `string` etc..), that field can either be nullable or not and also can have various defaults. We need our modifiers to work with all these scenarios.
 
-| nullable |    null default    | empty default[^1] |   known default   |      random default      |
-| :------: | :----------------: | :---------------: | :---------------: | :----------------------: |
-|    no    |       X[^2]        | [`DefaultType`][] | [`DefaultType`][] | [`UseStateForUnknown`][] |
-|   yes    | [`NullableType`][] | [`DefaultType`][] | [`DefaultType`][] | [`UseStateForUnknown`][] |
+| nullable |    null default    |   empty default[^1]   |     known default     |        random default        |
+| :------: | :----------------: | :-------------------: | :-------------------: | :--------------------------: |
+|    no    |       X[^2]        |   [`DefaultType`][]   |   [`DefaultType`][]   |   [`UseStateForUnknown`][]   |
+|   yes    | [`NullableType`][] | [`DefaultType`][][^3] | [`DefaultType`][][^3] | [`UseStateForUnknown`][][^3] |
 
 [^1]: _empty default_ means that the default value of the field on the server is the empty value for that type in golang. e.g. boolean `false`, string `""`, int `0` etc..
 [^2]: This scenairo is impossible.
+[^3]: End users will not be able to set the value of the field as `null` in the server. This is a limitation on terraform itself.
 
 [`DefaultType`]: #defaulttype
 [`NullableType`]: #nullabletype
