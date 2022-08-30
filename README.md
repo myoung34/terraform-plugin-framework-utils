@@ -75,6 +75,14 @@ Validates that the string matches a certain regex.
 validators.Match(regexp.MustCompile("^[0-9a-fA-F]{6}$"))
 ```
 
+#### NotMatch
+
+Validates that the string does not match a certain regex.
+
+```go
+validators.NotMatch(regexp.MustCompile("\\s"))
+```
+
 #### MinLength
 
 Validates that the string's length is at least of a certain value.
