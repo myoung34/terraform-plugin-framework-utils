@@ -25,6 +25,8 @@ Use the appropriate function for type whose name starts with `Default`.
 modifiers.DefaultBool(true)
 
 modifiers.DefaultString("")
+
+modifiers.DefaultFloat(3)
 ```
 
 #### NullableType
@@ -35,6 +37,8 @@ Use the appropriate function for type whose name starts with `Nullable`.
 modifiers.NullableBool()
 
 modifiers.NullableString()
+
+modifiers.NullableFloat()
 ```
 
 #### UseStateForUnknown
