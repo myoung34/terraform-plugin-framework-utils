@@ -12,9 +12,15 @@ Terraform will perform the following actions:
 [0m  [32m+[0m[0m resource "test_team" "default" {
       [32m+[0m [0m[1m[0mbool_empty_default[0m[0m             = false
       [32m+[0m [0m[1m[0mbool_known_default[0m[0m             = true
+      [32m+[0m [0m[1m[0mfloat_empty_default[0m[0m            = 0
+      [32m+[0m [0m[1m[0mfloat_known_default[0m[0m            = 1
+      [32m+[0m [0m[1m[0mfloat_random_default[0m[0m           = (known after apply)
       [32m+[0m [0m[1m[0mid[0m[0m                             = "default"
       [32m+[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = false
       [32m+[0m [0m[1m[0mnullable_bool_known_default[0m[0m    = true
+      [32m+[0m [0m[1m[0mnullable_float_empty_default[0m[0m   = 0
+      [32m+[0m [0m[1m[0mnullable_float_known_default[0m[0m   = 2
+      [32m+[0m [0m[1m[0mnullable_float_random_default[0m[0m  = (known after apply)
       [32m+[0m [0m[1m[0mnullable_string_known_default[0m[0m  = "Two"
       [32m+[0m [0m[1m[0mnullable_string_random_default[0m[0m = (known after apply)
       [32m+[0m [0m[1m[0mstring_known_default[0m[0m           = "One"
@@ -37,10 +43,17 @@ exports[`string_empty_default 2`] = `
         "attributes": {
           "bool_empty_default": false,
           "bool_known_default": true,
+          "float_empty_default": 0,
+          "float_known_default": 1,
+          "float_random_default": 5,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
+          "nullable_float": null,
+          "nullable_float_empty_default": 0,
+          "nullable_float_known_default": 2,
+          "nullable_float_random_default": 6,
           "nullable_string": null,
           "nullable_string_empty_default": "",
           "nullable_string_known_default": "Two",
@@ -81,10 +94,17 @@ exports[`string_empty_default 4`] = `
         "attributes": {
           "bool_empty_default": false,
           "bool_known_default": true,
+          "float_empty_default": 0,
+          "float_known_default": 1,
+          "float_random_default": 5,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
+          "nullable_float": null,
+          "nullable_float_empty_default": 0,
+          "nullable_float_known_default": 2,
+          "nullable_float_random_default": 6,
           "nullable_string": null,
           "nullable_string_empty_default": "",
           "nullable_string_known_default": "Two",
@@ -125,10 +145,17 @@ exports[`string_empty_default 6`] = `
         "attributes": {
           "bool_empty_default": false,
           "bool_known_default": true,
+          "float_empty_default": 0,
+          "float_known_default": 1,
+          "float_random_default": 5,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
+          "nullable_float": null,
+          "nullable_float_empty_default": 0,
+          "nullable_float_known_default": 2,
+          "nullable_float_random_default": 6,
           "nullable_string": null,
           "nullable_string_empty_default": "",
           "nullable_string_known_default": "Two",
@@ -169,10 +196,17 @@ exports[`string_empty_default 8`] = `
         "attributes": {
           "bool_empty_default": false,
           "bool_known_default": true,
+          "float_empty_default": 0,
+          "float_known_default": 1,
+          "float_random_default": 5,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
+          "nullable_float": null,
+          "nullable_float_empty_default": 0,
+          "nullable_float_known_default": 2,
+          "nullable_float_random_default": 6,
           "nullable_string": null,
           "nullable_string_empty_default": "",
           "nullable_string_known_default": "Two",
@@ -206,7 +240,7 @@ Terraform will perform the following actions:
 [0m  [33m~[0m[0m resource "test_team" "default" {
         [1m[0mid[0m[0m                             = "default"
       [32m+[0m [0m[1m[0mstring_empty_default[0m[0m           = "Three"
-        [90m# (8 unchanged attributes hidden)[0m[0m
+        [90m# (14 unchanged attributes hidden)[0m[0m
     }
 
 [0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.
@@ -225,10 +259,17 @@ exports[`string_empty_default 10`] = `
         "attributes": {
           "bool_empty_default": false,
           "bool_known_default": true,
+          "float_empty_default": 0,
+          "float_known_default": 1,
+          "float_random_default": 5,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
+          "nullable_float": null,
+          "nullable_float_empty_default": 0,
+          "nullable_float_known_default": 2,
+          "nullable_float_random_default": 6,
           "nullable_string": null,
           "nullable_string_empty_default": "",
           "nullable_string_known_default": "Two",
@@ -262,7 +303,7 @@ Terraform will perform the following actions:
 [0m  [33m~[0m[0m resource "test_team" "default" {
         [1m[0mid[0m[0m                             = "default"
       [31m-[0m [0m[1m[0mstring_empty_default[0m[0m           = "Three" [90m->[0m [0m[90mnull[0m[0m
-        [90m# (8 unchanged attributes hidden)[0m[0m
+        [90m# (14 unchanged attributes hidden)[0m[0m
     }
 
 [0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.
@@ -281,10 +322,17 @@ exports[`string_empty_default 12`] = `
         "attributes": {
           "bool_empty_default": false,
           "bool_known_default": true,
+          "float_empty_default": 0,
+          "float_known_default": 1,
+          "float_random_default": 5,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
+          "nullable_float": null,
+          "nullable_float_empty_default": 0,
+          "nullable_float_known_default": 2,
+          "nullable_float_random_default": 6,
           "nullable_string": null,
           "nullable_string_empty_default": "",
           "nullable_string_known_default": "Two",
@@ -318,9 +366,15 @@ Terraform will perform the following actions:
 [0m  [31m-[0m[0m resource "test_team" "default" {
       [31m-[0m [0m[1m[0mbool_empty_default[0m[0m             = false [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mbool_known_default[0m[0m             = true [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfloat_empty_default[0m[0m            = 0 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfloat_known_default[0m[0m            = 1 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfloat_random_default[0m[0m           = 5 [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mid[0m[0m                             = "default" [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = false [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_bool_known_default[0m[0m    = true [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mnullable_float_empty_default[0m[0m   = 0 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mnullable_float_known_default[0m[0m   = 2 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mnullable_float_random_default[0m[0m  = 6 [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_string_known_default[0m[0m  = "Two" [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_string_random_default[0m[0m = "random value" [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mstring_known_default[0m[0m           = "One" [90m->[0m [0m[90mnull[0m[0m

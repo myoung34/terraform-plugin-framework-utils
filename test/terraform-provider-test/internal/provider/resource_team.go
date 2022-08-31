@@ -142,6 +142,69 @@ func (t teamResourceType) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Dia
 					resource.UseStateForUnknown(),
 				},
 			},
+			"float_empty_default": {
+				MarkdownDescription: "Float with empty default. **Default** ``.",
+				Type:                types.Float64Type,
+				Optional:            true,
+				Computed:            true,
+				PlanModifiers: tfsdk.AttributePlanModifiers{
+					modifiers.DefaultFloat(0),
+				},
+			},
+			"float_known_default": {
+				MarkdownDescription: "Float with known default. **Default** `One`.",
+				Type:                types.Float64Type,
+				Optional:            true,
+				Computed:            true,
+				PlanModifiers: tfsdk.AttributePlanModifiers{
+					modifiers.DefaultFloat(1),
+				},
+			},
+			"float_random_default": {
+				MarkdownDescription: "Float with random default.",
+				Type:                types.Float64Type,
+				Optional:            true,
+				Computed:            true,
+				PlanModifiers: tfsdk.AttributePlanModifiers{
+					resource.UseStateForUnknown(),
+				},
+			},
+			"nullable_float": {
+				MarkdownDescription: "Nullable float. **Default** `null`.",
+				Type:                types.Float64Type,
+				Optional:            true,
+				Computed:            true,
+				PlanModifiers: tfsdk.AttributePlanModifiers{
+					modifiers.NullableFloat(),
+				},
+			},
+			"nullable_float_empty_default": {
+				MarkdownDescription: "Nullable float with empty default. **Default** ``.",
+				Type:                types.Float64Type,
+				Optional:            true,
+				Computed:            true,
+				PlanModifiers: tfsdk.AttributePlanModifiers{
+					modifiers.DefaultFloat(0),
+				},
+			},
+			"nullable_float_known_default": {
+				MarkdownDescription: "Nullable float with known default. **Default** `Two`.",
+				Type:                types.Float64Type,
+				Optional:            true,
+				Computed:            true,
+				PlanModifiers: tfsdk.AttributePlanModifiers{
+					modifiers.DefaultFloat(2),
+				},
+			},
+			"nullable_float_random_default": {
+				MarkdownDescription: "Nullable float with random default.",
+				Type:                types.Float64Type,
+				Optional:            true,
+				Computed:            true,
+				PlanModifiers: tfsdk.AttributePlanModifiers{
+					resource.UseStateForUnknown(),
+				},
+			},
 		},
 	}, nil
 }
@@ -155,19 +218,26 @@ func (t teamResourceType) NewResource(ctx context.Context, in provider.Provider)
 }
 
 type teamResourceData struct {
-	Name                        types.String `tfsdk:"id"`
-	BoolEmptyDefault            types.Bool   `tfsdk:"bool_empty_default"`
-	BoolKnownDefault            types.Bool   `tfsdk:"bool_known_default"`
-	NullableBool                types.Bool   `tfsdk:"nullable_bool"`
-	NullableBoolEmptyDefault    types.Bool   `tfsdk:"nullable_bool_empty_default"`
-	NullableBoolKnownDefault    types.Bool   `tfsdk:"nullable_bool_known_default"`
-	StringEmptyDefault          types.String `tfsdk:"string_empty_default"`
-	StringKnownDefault          types.String `tfsdk:"string_known_default"`
-	StringRandomDefault         types.String `tfsdk:"string_random_default"`
-	NullableString              types.String `tfsdk:"nullable_string"`
-	NullableStringEmptyDefault  types.String `tfsdk:"nullable_string_empty_default"`
-	NullableStringKnownDefault  types.String `tfsdk:"nullable_string_known_default"`
-	NullableStringRandomDefault types.String `tfsdk:"nullable_string_random_default"`
+	Name                        types.String  `tfsdk:"id"`
+	BoolEmptyDefault            types.Bool    `tfsdk:"bool_empty_default"`
+	BoolKnownDefault            types.Bool    `tfsdk:"bool_known_default"`
+	NullableBool                types.Bool    `tfsdk:"nullable_bool"`
+	NullableBoolEmptyDefault    types.Bool    `tfsdk:"nullable_bool_empty_default"`
+	NullableBoolKnownDefault    types.Bool    `tfsdk:"nullable_bool_known_default"`
+	StringEmptyDefault          types.String  `tfsdk:"string_empty_default"`
+	StringKnownDefault          types.String  `tfsdk:"string_known_default"`
+	StringRandomDefault         types.String  `tfsdk:"string_random_default"`
+	NullableString              types.String  `tfsdk:"nullable_string"`
+	NullableStringEmptyDefault  types.String  `tfsdk:"nullable_string_empty_default"`
+	NullableStringKnownDefault  types.String  `tfsdk:"nullable_string_known_default"`
+	NullableStringRandomDefault types.String  `tfsdk:"nullable_string_random_default"`
+	FloatEmptyDefault           types.Float64 `tfsdk:"float_empty_default"`
+	FloatKnownDefault           types.Float64 `tfsdk:"float_known_default"`
+	FloatRandomDefault          types.Float64 `tfsdk:"float_random_default"`
+	NullableFloat               types.Float64 `tfsdk:"nullable_float"`
+	NullableFloatEmptyDefault   types.Float64 `tfsdk:"nullable_float_empty_default"`
+	NullableFloatKnownDefault   types.Float64 `tfsdk:"nullable_float_known_default"`
+	NullableFloatRandomDefault  types.Float64 `tfsdk:"nullable_float_random_default"`
 }
 
 type teamResource struct {
@@ -192,6 +262,8 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 		BoolKnownDefault:   data.BoolKnownDefault.Value,
 		StringEmptyDefault: data.StringEmptyDefault.Value,
 		StringKnownDefault: data.StringKnownDefault.Value,
+		FloatEmptyDefault:  data.FloatEmptyDefault.Value,
+		FloatKnownDefault:  data.FloatKnownDefault.Value,
 	}
 
 	if !data.NullableBool.IsNull() {
@@ -226,6 +298,26 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 		input.NullableStringRandomDefault = &data.NullableStringRandomDefault.Value
 	}
 
+	if !data.FloatRandomDefault.IsUnknown() {
+		input.FloatRandomDefault = &data.FloatRandomDefault.Value
+	}
+
+	if !data.NullableFloat.IsNull() {
+		input.NullableFloat = &data.NullableFloat.Value
+	}
+
+	if !data.NullableFloatEmptyDefault.IsNull() {
+		input.NullableFloatEmptyDefault = &data.NullableFloatEmptyDefault.Value
+	}
+
+	if !data.NullableFloatKnownDefault.IsNull() {
+		input.NullableFloatKnownDefault = &data.NullableFloatKnownDefault.Value
+	}
+
+	if !data.NullableFloatRandomDefault.IsUnknown() {
+		input.NullableFloatRandomDefault = &data.NullableFloatRandomDefault.Value
+	}
+
 	tflog.Warn(ctx, fmt.Sprintf("create %v", input))
 
 	response, err := createTeam(context.Background(), r.provider.client, input)
@@ -244,6 +336,9 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 	data.StringEmptyDefault = types.String{Value: team.StringEmptyDefault}
 	data.StringKnownDefault = types.String{Value: team.StringKnownDefault}
 	data.StringRandomDefault = types.String{Value: team.StringRandomDefault}
+	data.FloatEmptyDefault = types.Float64{Value: float64(team.FloatEmptyDefault)}
+	data.FloatKnownDefault = types.Float64{Value: float64(team.FloatKnownDefault)}
+	data.FloatRandomDefault = types.Float64{Value: float64(team.FloatRandomDefault)}
 
 	if team.NullableBool != nil {
 		data.NullableBool = types.Bool{Value: *team.NullableBool}
@@ -271,6 +366,22 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 
 	if team.NullableStringRandomDefault != nil {
 		data.NullableStringRandomDefault = types.String{Value: *team.NullableStringRandomDefault}
+	}
+
+	if team.NullableFloat != nil {
+		data.NullableFloat = types.Float64{Value: float64(*team.NullableFloat)}
+	}
+
+	if team.NullableFloatEmptyDefault != nil {
+		data.NullableFloatEmptyDefault = types.Float64{Value: float64(*team.NullableFloatEmptyDefault)}
+	}
+
+	if team.NullableFloatKnownDefault != nil {
+		data.NullableFloatKnownDefault = types.Float64{Value: float64(*team.NullableFloatKnownDefault)}
+	}
+
+	if team.NullableFloatRandomDefault != nil {
+		data.NullableFloatRandomDefault = types.Float64{Value: float64(*team.NullableFloatRandomDefault)}
 	}
 
 	diags = resp.State.Set(ctx, &data)
@@ -303,6 +414,9 @@ func (r teamResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 	data.StringEmptyDefault = types.String{Value: team.StringEmptyDefault}
 	data.StringKnownDefault = types.String{Value: team.StringKnownDefault}
 	data.StringRandomDefault = types.String{Value: team.StringRandomDefault}
+	data.FloatEmptyDefault = types.Float64{Value: float64(team.FloatEmptyDefault)}
+	data.FloatKnownDefault = types.Float64{Value: float64(team.FloatKnownDefault)}
+	data.FloatRandomDefault = types.Float64{Value: float64(team.FloatRandomDefault)}
 
 	if team.NullableBool != nil {
 		data.NullableBool = types.Bool{Value: *team.NullableBool}
@@ -332,6 +446,22 @@ func (r teamResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 		data.NullableStringRandomDefault = types.String{Value: *team.NullableStringRandomDefault}
 	}
 
+	if team.NullableFloat != nil {
+		data.NullableFloat = types.Float64{Value: float64(*team.NullableFloat)}
+	}
+
+	if team.NullableFloatEmptyDefault != nil {
+		data.NullableFloatEmptyDefault = types.Float64{Value: float64(*team.NullableFloatEmptyDefault)}
+	}
+
+	if team.NullableFloatKnownDefault != nil {
+		data.NullableFloatKnownDefault = types.Float64{Value: float64(*team.NullableFloatKnownDefault)}
+	}
+
+	if team.NullableFloatRandomDefault != nil {
+		data.NullableFloatRandomDefault = types.Float64{Value: float64(*team.NullableFloatRandomDefault)}
+	}
+
 	diags = resp.State.Set(ctx, &data)
 	resp.Diagnostics.Append(diags...)
 }
@@ -359,6 +489,8 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 		BoolKnownDefault:   data.BoolKnownDefault.Value,
 		StringEmptyDefault: data.StringEmptyDefault.Value,
 		StringKnownDefault: data.StringKnownDefault.Value,
+		FloatEmptyDefault:  data.FloatEmptyDefault.Value,
+		FloatKnownDefault:  data.FloatKnownDefault.Value,
 	}
 
 	if data.Name.Value != state.Name.Value {
@@ -397,6 +529,26 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 		input.NullableStringRandomDefault = &data.NullableStringRandomDefault.Value
 	}
 
+	if !data.FloatRandomDefault.IsNull() {
+		input.FloatRandomDefault = &data.FloatRandomDefault.Value
+	}
+
+	if !data.NullableFloat.IsNull() {
+		input.NullableFloat = &data.NullableFloat.Value
+	}
+
+	if !data.NullableFloatEmptyDefault.IsNull() {
+		input.NullableFloatEmptyDefault = &data.NullableFloatEmptyDefault.Value
+	}
+
+	if !data.NullableFloatKnownDefault.IsNull() {
+		input.NullableFloatKnownDefault = &data.NullableFloatKnownDefault.Value
+	}
+
+	if !data.NullableFloatRandomDefault.IsNull() {
+		input.NullableFloatRandomDefault = &data.NullableFloatRandomDefault.Value
+	}
+
 	response, err := updateTeam(context.Background(), r.provider.client, input, state.Name.Value)
 
 	if err != nil {
@@ -413,6 +565,9 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 	data.StringEmptyDefault = types.String{Value: team.StringEmptyDefault}
 	data.StringKnownDefault = types.String{Value: team.StringKnownDefault}
 	data.StringRandomDefault = types.String{Value: team.StringRandomDefault}
+	data.FloatEmptyDefault = types.Float64{Value: float64(team.FloatEmptyDefault)}
+	data.FloatKnownDefault = types.Float64{Value: float64(team.FloatKnownDefault)}
+	data.FloatRandomDefault = types.Float64{Value: float64(team.FloatRandomDefault)}
 
 	if team.NullableBool != nil {
 		data.NullableBool = types.Bool{Value: *team.NullableBool}
@@ -440,6 +595,22 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 
 	if team.NullableStringRandomDefault != nil {
 		data.NullableStringRandomDefault = types.String{Value: *team.NullableStringRandomDefault}
+	}
+
+	if team.NullableFloat != nil {
+		data.NullableFloat = types.Float64{Value: float64(*team.NullableFloat)}
+	}
+
+	if team.NullableFloatEmptyDefault != nil {
+		data.NullableFloatEmptyDefault = types.Float64{Value: float64(*team.NullableFloatEmptyDefault)}
+	}
+
+	if team.NullableFloatKnownDefault != nil {
+		data.NullableFloatKnownDefault = types.Float64{Value: float64(*team.NullableFloatKnownDefault)}
+	}
+
+	if team.NullableFloatRandomDefault != nil {
+		data.NullableFloatRandomDefault = types.Float64{Value: float64(*team.NullableFloatRandomDefault)}
 	}
 
 	diags = resp.State.Set(ctx, &data)

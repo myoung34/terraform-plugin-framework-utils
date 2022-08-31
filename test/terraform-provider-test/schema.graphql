@@ -200,11 +200,13 @@ type Teams {
   stringRandomDefault: String!
   stringEmptyDefault: String!
   nullableStringEmptyDefault: String
-  intEmptyDefault: BigInt!
-  intKnownDefault: BigInt!
-  nullableInt: BigInt
-  nullableIntEmptyDefault: BigInt
-  nullableIntKnownDefault: BigInt
+  floatEmptyDefault: String!
+  floatKnownDefault: String!
+  nullableFloat: String
+  nullableFloatEmptyDefault: String
+  nullableFloatKnownDefault: String
+  floatRandomDefault: String!
+  nullableFloatRandomDefault: String
 }
 
 type TeamsConnection {
@@ -239,11 +241,13 @@ input TeamsFilter {
   stringRandomDefault: StringFilter
   stringEmptyDefault: StringFilter
   nullableStringEmptyDefault: StringFilter
-  intEmptyDefault: BigIntFilter
-  intKnownDefault: BigIntFilter
-  nullableInt: BigIntFilter
-  nullableIntEmptyDefault: BigIntFilter
-  nullableIntKnownDefault: BigIntFilter
+  floatEmptyDefault: StringFilter
+  floatKnownDefault: StringFilter
+  nullableFloat: StringFilter
+  nullableFloatEmptyDefault: StringFilter
+  nullableFloatKnownDefault: StringFilter
+  floatRandomDefault: StringFilter
+  nullableFloatRandomDefault: StringFilter
 }
 
 input TeamsInsertInput {
@@ -260,11 +264,13 @@ input TeamsInsertInput {
   stringRandomDefault: String
   stringEmptyDefault: String
   nullableStringEmptyDefault: String
-  intEmptyDefault: BigInt
-  intKnownDefault: BigInt
-  nullableInt: BigInt
-  nullableIntEmptyDefault: BigInt
-  nullableIntKnownDefault: BigInt
+  floatEmptyDefault: String
+  floatKnownDefault: String
+  nullableFloat: String
+  nullableFloatEmptyDefault: String
+  nullableFloatKnownDefault: String
+  floatRandomDefault: String
+  nullableFloatRandomDefault: String
 }
 
 type TeamsInsertResponse {
@@ -289,11 +295,13 @@ input TeamsOrderBy {
   stringRandomDefault: OrderByDirection
   stringEmptyDefault: OrderByDirection
   nullableStringEmptyDefault: OrderByDirection
-  intEmptyDefault: OrderByDirection
-  intKnownDefault: OrderByDirection
-  nullableInt: OrderByDirection
-  nullableIntEmptyDefault: OrderByDirection
-  nullableIntKnownDefault: OrderByDirection
+  floatEmptyDefault: OrderByDirection
+  floatKnownDefault: OrderByDirection
+  nullableFloat: OrderByDirection
+  nullableFloatEmptyDefault: OrderByDirection
+  nullableFloatKnownDefault: OrderByDirection
+  floatRandomDefault: OrderByDirection
+  nullableFloatRandomDefault: OrderByDirection
 }
 
 input TeamsUpdateInput {
@@ -310,11 +318,13 @@ input TeamsUpdateInput {
   stringRandomDefault: String
   stringEmptyDefault: String
   nullableStringEmptyDefault: String
-  intEmptyDefault: BigInt
-  intKnownDefault: BigInt
-  nullableInt: BigInt
-  nullableIntEmptyDefault: BigInt
-  nullableIntKnownDefault: BigInt
+  floatEmptyDefault: String
+  floatKnownDefault: String
+  nullableFloat: String
+  nullableFloatEmptyDefault: String
+  nullableFloatKnownDefault: String
+  floatRandomDefault: String
+  nullableFloatRandomDefault: String
 }
 
 type TeamsUpdateResponse {

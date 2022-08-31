@@ -11,19 +11,26 @@ import (
 
 // Team includes the GraphQL fields of Teams requested by the fragment Team.
 type Team struct {
-	Name                        string  `json:"name"`
-	BoolEmptyDefault            bool    `json:"boolEmptyDefault"`
-	BoolKnownDefault            bool    `json:"boolKnownDefault"`
-	NullableBool                *bool   `json:"nullableBool"`
-	NullableBoolEmptyDefault    *bool   `json:"nullableBoolEmptyDefault"`
-	NullableBoolKnownDefault    *bool   `json:"nullableBoolKnownDefault"`
-	StringEmptyDefault          string  `json:"stringEmptyDefault"`
-	StringKnownDefault          string  `json:"stringKnownDefault"`
-	StringRandomDefault         string  `json:"stringRandomDefault"`
-	NullableString              *string `json:"nullableString"`
-	NullableStringEmptyDefault  *string `json:"nullableStringEmptyDefault"`
-	NullableStringKnownDefault  *string `json:"nullableStringKnownDefault"`
-	NullableStringRandomDefault *string `json:"nullableStringRandomDefault"`
+	Name                        string   `json:"name"`
+	BoolEmptyDefault            bool     `json:"boolEmptyDefault"`
+	BoolKnownDefault            bool     `json:"boolKnownDefault"`
+	NullableBool                *bool    `json:"nullableBool"`
+	NullableBoolEmptyDefault    *bool    `json:"nullableBoolEmptyDefault"`
+	NullableBoolKnownDefault    *bool    `json:"nullableBoolKnownDefault"`
+	StringEmptyDefault          string   `json:"stringEmptyDefault"`
+	StringKnownDefault          string   `json:"stringKnownDefault"`
+	StringRandomDefault         string   `json:"stringRandomDefault"`
+	NullableString              *string  `json:"nullableString"`
+	NullableStringEmptyDefault  *string  `json:"nullableStringEmptyDefault"`
+	NullableStringKnownDefault  *string  `json:"nullableStringKnownDefault"`
+	NullableStringRandomDefault *string  `json:"nullableStringRandomDefault"`
+	FloatEmptyDefault           float64  `json:"floatEmptyDefault"`
+	FloatKnownDefault           float64  `json:"floatKnownDefault"`
+	FloatRandomDefault          float64  `json:"floatRandomDefault"`
+	NullableFloat               *float64 `json:"nullableFloat"`
+	NullableFloatEmptyDefault   *float64 `json:"nullableFloatEmptyDefault"`
+	NullableFloatKnownDefault   *float64 `json:"nullableFloatKnownDefault"`
+	NullableFloatRandomDefault  *float64 `json:"nullableFloatRandomDefault"`
 }
 
 // GetName returns Team.Name, and is useful for accessing the field via an interface.
@@ -65,25 +72,48 @@ func (v *Team) GetNullableStringKnownDefault() *string { return v.NullableString
 // GetNullableStringRandomDefault returns Team.NullableStringRandomDefault, and is useful for accessing the field via an interface.
 func (v *Team) GetNullableStringRandomDefault() *string { return v.NullableStringRandomDefault }
 
+// GetFloatEmptyDefault returns Team.FloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *Team) GetFloatEmptyDefault() float64 { return v.FloatEmptyDefault }
+
+// GetFloatKnownDefault returns Team.FloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *Team) GetFloatKnownDefault() float64 { return v.FloatKnownDefault }
+
+// GetFloatRandomDefault returns Team.FloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *Team) GetFloatRandomDefault() float64 { return v.FloatRandomDefault }
+
+// GetNullableFloat returns Team.NullableFloat, and is useful for accessing the field via an interface.
+func (v *Team) GetNullableFloat() *float64 { return v.NullableFloat }
+
+// GetNullableFloatEmptyDefault returns Team.NullableFloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *Team) GetNullableFloatEmptyDefault() *float64 { return v.NullableFloatEmptyDefault }
+
+// GetNullableFloatKnownDefault returns Team.NullableFloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *Team) GetNullableFloatKnownDefault() *float64 { return v.NullableFloatKnownDefault }
+
+// GetNullableFloatRandomDefault returns Team.NullableFloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *Team) GetNullableFloatRandomDefault() *float64 { return v.NullableFloatRandomDefault }
+
 type TeamsInsertInput struct {
-	NullableString              *string `json:"nullableString"`
-	BoolEmptyDefault            bool    `json:"boolEmptyDefault"`
-	BoolKnownDefault            bool    `json:"boolKnownDefault"`
-	StringKnownDefault          string  `json:"stringKnownDefault"`
-	NullableBool                *bool   `json:"nullableBool"`
-	NullableBoolEmptyDefault    *bool   `json:"nullableBoolEmptyDefault"`
-	NullableBoolKnownDefault    *bool   `json:"nullableBoolKnownDefault"`
-	NullableStringKnownDefault  *string `json:"nullableStringKnownDefault"`
-	NullableStringRandomDefault *string `json:"nullableStringRandomDefault,omitempty"`
-	Name                        string  `json:"name,omitempty"`
-	StringRandomDefault         *string `json:"stringRandomDefault,omitempty"`
-	StringEmptyDefault          string  `json:"stringEmptyDefault"`
-	NullableStringEmptyDefault  *string `json:"nullableStringEmptyDefault"`
-	IntEmptyDefault             int     `json:"intEmptyDefault"`
-	IntKnownDefault             int     `json:"intKnownDefault"`
-	NullableInt                 int     `json:"nullableInt"`
-	NullableIntEmptyDefault     int     `json:"nullableIntEmptyDefault"`
-	NullableIntKnownDefault     int     `json:"nullableIntKnownDefault"`
+	NullableString              *string  `json:"nullableString"`
+	BoolEmptyDefault            bool     `json:"boolEmptyDefault"`
+	BoolKnownDefault            bool     `json:"boolKnownDefault"`
+	StringKnownDefault          string   `json:"stringKnownDefault"`
+	NullableBool                *bool    `json:"nullableBool"`
+	NullableBoolEmptyDefault    *bool    `json:"nullableBoolEmptyDefault"`
+	NullableBoolKnownDefault    *bool    `json:"nullableBoolKnownDefault"`
+	NullableStringKnownDefault  *string  `json:"nullableStringKnownDefault"`
+	NullableStringRandomDefault *string  `json:"nullableStringRandomDefault,omitempty"`
+	Name                        string   `json:"name,omitempty"`
+	StringRandomDefault         *string  `json:"stringRandomDefault,omitempty"`
+	StringEmptyDefault          string   `json:"stringEmptyDefault"`
+	NullableStringEmptyDefault  *string  `json:"nullableStringEmptyDefault"`
+	FloatEmptyDefault           float64  `json:"floatEmptyDefault"`
+	FloatKnownDefault           float64  `json:"floatKnownDefault"`
+	NullableFloat               *float64 `json:"nullableFloat"`
+	NullableFloatEmptyDefault   *float64 `json:"nullableFloatEmptyDefault"`
+	NullableFloatKnownDefault   *float64 `json:"nullableFloatKnownDefault"`
+	FloatRandomDefault          *float64 `json:"floatRandomDefault,omitempty"`
+	NullableFloatRandomDefault  *float64 `json:"nullableFloatRandomDefault,omitempty"`
 }
 
 // GetNullableString returns TeamsInsertInput.NullableString, and is useful for accessing the field via an interface.
@@ -131,40 +161,54 @@ func (v *TeamsInsertInput) GetNullableStringEmptyDefault() *string {
 	return v.NullableStringEmptyDefault
 }
 
-// GetIntEmptyDefault returns TeamsInsertInput.IntEmptyDefault, and is useful for accessing the field via an interface.
-func (v *TeamsInsertInput) GetIntEmptyDefault() int { return v.IntEmptyDefault }
+// GetFloatEmptyDefault returns TeamsInsertInput.FloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *TeamsInsertInput) GetFloatEmptyDefault() float64 { return v.FloatEmptyDefault }
 
-// GetIntKnownDefault returns TeamsInsertInput.IntKnownDefault, and is useful for accessing the field via an interface.
-func (v *TeamsInsertInput) GetIntKnownDefault() int { return v.IntKnownDefault }
+// GetFloatKnownDefault returns TeamsInsertInput.FloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *TeamsInsertInput) GetFloatKnownDefault() float64 { return v.FloatKnownDefault }
 
-// GetNullableInt returns TeamsInsertInput.NullableInt, and is useful for accessing the field via an interface.
-func (v *TeamsInsertInput) GetNullableInt() int { return v.NullableInt }
+// GetNullableFloat returns TeamsInsertInput.NullableFloat, and is useful for accessing the field via an interface.
+func (v *TeamsInsertInput) GetNullableFloat() *float64 { return v.NullableFloat }
 
-// GetNullableIntEmptyDefault returns TeamsInsertInput.NullableIntEmptyDefault, and is useful for accessing the field via an interface.
-func (v *TeamsInsertInput) GetNullableIntEmptyDefault() int { return v.NullableIntEmptyDefault }
+// GetNullableFloatEmptyDefault returns TeamsInsertInput.NullableFloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *TeamsInsertInput) GetNullableFloatEmptyDefault() *float64 {
+	return v.NullableFloatEmptyDefault
+}
 
-// GetNullableIntKnownDefault returns TeamsInsertInput.NullableIntKnownDefault, and is useful for accessing the field via an interface.
-func (v *TeamsInsertInput) GetNullableIntKnownDefault() int { return v.NullableIntKnownDefault }
+// GetNullableFloatKnownDefault returns TeamsInsertInput.NullableFloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *TeamsInsertInput) GetNullableFloatKnownDefault() *float64 {
+	return v.NullableFloatKnownDefault
+}
+
+// GetFloatRandomDefault returns TeamsInsertInput.FloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *TeamsInsertInput) GetFloatRandomDefault() *float64 { return v.FloatRandomDefault }
+
+// GetNullableFloatRandomDefault returns TeamsInsertInput.NullableFloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *TeamsInsertInput) GetNullableFloatRandomDefault() *float64 {
+	return v.NullableFloatRandomDefault
+}
 
 type TeamsUpdateInput struct {
-	NullableString              *string `json:"nullableString"`
-	BoolEmptyDefault            bool    `json:"boolEmptyDefault"`
-	BoolKnownDefault            bool    `json:"boolKnownDefault"`
-	StringKnownDefault          string  `json:"stringKnownDefault"`
-	NullableBool                *bool   `json:"nullableBool"`
-	NullableBoolEmptyDefault    *bool   `json:"nullableBoolEmptyDefault"`
-	NullableBoolKnownDefault    *bool   `json:"nullableBoolKnownDefault"`
-	NullableStringKnownDefault  *string `json:"nullableStringKnownDefault"`
-	NullableStringRandomDefault *string `json:"nullableStringRandomDefault,omitempty"`
-	Name                        string  `json:"name,omitempty"`
-	StringRandomDefault         *string `json:"stringRandomDefault,omitempty"`
-	StringEmptyDefault          string  `json:"stringEmptyDefault"`
-	NullableStringEmptyDefault  *string `json:"nullableStringEmptyDefault"`
-	IntEmptyDefault             int     `json:"intEmptyDefault"`
-	IntKnownDefault             int     `json:"intKnownDefault"`
-	NullableInt                 int     `json:"nullableInt"`
-	NullableIntEmptyDefault     int     `json:"nullableIntEmptyDefault"`
-	NullableIntKnownDefault     int     `json:"nullableIntKnownDefault"`
+	NullableString              *string  `json:"nullableString"`
+	BoolEmptyDefault            bool     `json:"boolEmptyDefault"`
+	BoolKnownDefault            bool     `json:"boolKnownDefault"`
+	StringKnownDefault          string   `json:"stringKnownDefault"`
+	NullableBool                *bool    `json:"nullableBool"`
+	NullableBoolEmptyDefault    *bool    `json:"nullableBoolEmptyDefault"`
+	NullableBoolKnownDefault    *bool    `json:"nullableBoolKnownDefault"`
+	NullableStringKnownDefault  *string  `json:"nullableStringKnownDefault"`
+	NullableStringRandomDefault *string  `json:"nullableStringRandomDefault,omitempty"`
+	Name                        string   `json:"name,omitempty"`
+	StringRandomDefault         *string  `json:"stringRandomDefault,omitempty"`
+	StringEmptyDefault          string   `json:"stringEmptyDefault"`
+	NullableStringEmptyDefault  *string  `json:"nullableStringEmptyDefault"`
+	FloatEmptyDefault           float64  `json:"floatEmptyDefault"`
+	FloatKnownDefault           float64  `json:"floatKnownDefault"`
+	NullableFloat               *float64 `json:"nullableFloat"`
+	NullableFloatEmptyDefault   *float64 `json:"nullableFloatEmptyDefault"`
+	NullableFloatKnownDefault   *float64 `json:"nullableFloatKnownDefault"`
+	FloatRandomDefault          *float64 `json:"floatRandomDefault,omitempty"`
+	NullableFloatRandomDefault  *float64 `json:"nullableFloatRandomDefault,omitempty"`
 }
 
 // GetNullableString returns TeamsUpdateInput.NullableString, and is useful for accessing the field via an interface.
@@ -212,20 +256,32 @@ func (v *TeamsUpdateInput) GetNullableStringEmptyDefault() *string {
 	return v.NullableStringEmptyDefault
 }
 
-// GetIntEmptyDefault returns TeamsUpdateInput.IntEmptyDefault, and is useful for accessing the field via an interface.
-func (v *TeamsUpdateInput) GetIntEmptyDefault() int { return v.IntEmptyDefault }
+// GetFloatEmptyDefault returns TeamsUpdateInput.FloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *TeamsUpdateInput) GetFloatEmptyDefault() float64 { return v.FloatEmptyDefault }
 
-// GetIntKnownDefault returns TeamsUpdateInput.IntKnownDefault, and is useful for accessing the field via an interface.
-func (v *TeamsUpdateInput) GetIntKnownDefault() int { return v.IntKnownDefault }
+// GetFloatKnownDefault returns TeamsUpdateInput.FloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *TeamsUpdateInput) GetFloatKnownDefault() float64 { return v.FloatKnownDefault }
 
-// GetNullableInt returns TeamsUpdateInput.NullableInt, and is useful for accessing the field via an interface.
-func (v *TeamsUpdateInput) GetNullableInt() int { return v.NullableInt }
+// GetNullableFloat returns TeamsUpdateInput.NullableFloat, and is useful for accessing the field via an interface.
+func (v *TeamsUpdateInput) GetNullableFloat() *float64 { return v.NullableFloat }
 
-// GetNullableIntEmptyDefault returns TeamsUpdateInput.NullableIntEmptyDefault, and is useful for accessing the field via an interface.
-func (v *TeamsUpdateInput) GetNullableIntEmptyDefault() int { return v.NullableIntEmptyDefault }
+// GetNullableFloatEmptyDefault returns TeamsUpdateInput.NullableFloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *TeamsUpdateInput) GetNullableFloatEmptyDefault() *float64 {
+	return v.NullableFloatEmptyDefault
+}
 
-// GetNullableIntKnownDefault returns TeamsUpdateInput.NullableIntKnownDefault, and is useful for accessing the field via an interface.
-func (v *TeamsUpdateInput) GetNullableIntKnownDefault() int { return v.NullableIntKnownDefault }
+// GetNullableFloatKnownDefault returns TeamsUpdateInput.NullableFloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *TeamsUpdateInput) GetNullableFloatKnownDefault() *float64 {
+	return v.NullableFloatKnownDefault
+}
+
+// GetFloatRandomDefault returns TeamsUpdateInput.FloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *TeamsUpdateInput) GetFloatRandomDefault() *float64 { return v.FloatRandomDefault }
+
+// GetNullableFloatRandomDefault returns TeamsUpdateInput.NullableFloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *TeamsUpdateInput) GetNullableFloatRandomDefault() *float64 {
+	return v.NullableFloatRandomDefault
+}
 
 // __createTeamInput is used internally by genqlient
 type __createTeamInput struct {
@@ -344,6 +400,41 @@ func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) Get
 	return v.Team.NullableStringRandomDefault
 }
 
+// GetFloatEmptyDefault returns createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams.FloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) GetFloatEmptyDefault() float64 {
+	return v.Team.FloatEmptyDefault
+}
+
+// GetFloatKnownDefault returns createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams.FloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) GetFloatKnownDefault() float64 {
+	return v.Team.FloatKnownDefault
+}
+
+// GetFloatRandomDefault returns createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams.FloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) GetFloatRandomDefault() float64 {
+	return v.Team.FloatRandomDefault
+}
+
+// GetNullableFloat returns createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams.NullableFloat, and is useful for accessing the field via an interface.
+func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) GetNullableFloat() *float64 {
+	return v.Team.NullableFloat
+}
+
+// GetNullableFloatEmptyDefault returns createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams.NullableFloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) GetNullableFloatEmptyDefault() *float64 {
+	return v.Team.NullableFloatEmptyDefault
+}
+
+// GetNullableFloatKnownDefault returns createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams.NullableFloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) GetNullableFloatKnownDefault() *float64 {
+	return v.Team.NullableFloatKnownDefault
+}
+
+// GetNullableFloatRandomDefault returns createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams.NullableFloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) GetNullableFloatRandomDefault() *float64 {
+	return v.Team.NullableFloatRandomDefault
+}
+
 func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) UnmarshalJSON(b []byte) error {
 
 	if string(b) == "null" {
@@ -395,6 +486,20 @@ type __premarshalcreateTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTe
 	NullableStringKnownDefault *string `json:"nullableStringKnownDefault"`
 
 	NullableStringRandomDefault *string `json:"nullableStringRandomDefault"`
+
+	FloatEmptyDefault float64 `json:"floatEmptyDefault"`
+
+	FloatKnownDefault float64 `json:"floatKnownDefault"`
+
+	FloatRandomDefault float64 `json:"floatRandomDefault"`
+
+	NullableFloat *float64 `json:"nullableFloat"`
+
+	NullableFloatEmptyDefault *float64 `json:"nullableFloatEmptyDefault"`
+
+	NullableFloatKnownDefault *float64 `json:"nullableFloatKnownDefault"`
+
+	NullableFloatRandomDefault *float64 `json:"nullableFloatRandomDefault"`
 }
 
 func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) MarshalJSON() ([]byte, error) {
@@ -421,6 +526,13 @@ func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) __p
 	retval.NullableStringEmptyDefault = v.Team.NullableStringEmptyDefault
 	retval.NullableStringKnownDefault = v.Team.NullableStringKnownDefault
 	retval.NullableStringRandomDefault = v.Team.NullableStringRandomDefault
+	retval.FloatEmptyDefault = v.Team.FloatEmptyDefault
+	retval.FloatKnownDefault = v.Team.FloatKnownDefault
+	retval.FloatRandomDefault = v.Team.FloatRandomDefault
+	retval.NullableFloat = v.Team.NullableFloat
+	retval.NullableFloatEmptyDefault = v.Team.NullableFloatEmptyDefault
+	retval.NullableFloatKnownDefault = v.Team.NullableFloatKnownDefault
+	retval.NullableFloatRandomDefault = v.Team.NullableFloatRandomDefault
 	return &retval, nil
 }
 
@@ -558,6 +670,41 @@ func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetNullab
 	return v.Team.NullableStringRandomDefault
 }
 
+// GetFloatEmptyDefault returns getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams.FloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetFloatEmptyDefault() float64 {
+	return v.Team.FloatEmptyDefault
+}
+
+// GetFloatKnownDefault returns getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams.FloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetFloatKnownDefault() float64 {
+	return v.Team.FloatKnownDefault
+}
+
+// GetFloatRandomDefault returns getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams.FloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetFloatRandomDefault() float64 {
+	return v.Team.FloatRandomDefault
+}
+
+// GetNullableFloat returns getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams.NullableFloat, and is useful for accessing the field via an interface.
+func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetNullableFloat() *float64 {
+	return v.Team.NullableFloat
+}
+
+// GetNullableFloatEmptyDefault returns getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams.NullableFloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetNullableFloatEmptyDefault() *float64 {
+	return v.Team.NullableFloatEmptyDefault
+}
+
+// GetNullableFloatKnownDefault returns getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams.NullableFloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetNullableFloatKnownDefault() *float64 {
+	return v.Team.NullableFloatKnownDefault
+}
+
+// GetNullableFloatRandomDefault returns getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams.NullableFloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetNullableFloatRandomDefault() *float64 {
+	return v.Team.NullableFloatRandomDefault
+}
+
 func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) UnmarshalJSON(b []byte) error {
 
 	if string(b) == "null" {
@@ -609,6 +756,20 @@ type __premarshalgetTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams st
 	NullableStringKnownDefault *string `json:"nullableStringKnownDefault"`
 
 	NullableStringRandomDefault *string `json:"nullableStringRandomDefault"`
+
+	FloatEmptyDefault float64 `json:"floatEmptyDefault"`
+
+	FloatKnownDefault float64 `json:"floatKnownDefault"`
+
+	FloatRandomDefault float64 `json:"floatRandomDefault"`
+
+	NullableFloat *float64 `json:"nullableFloat"`
+
+	NullableFloatEmptyDefault *float64 `json:"nullableFloatEmptyDefault"`
+
+	NullableFloatKnownDefault *float64 `json:"nullableFloatKnownDefault"`
+
+	NullableFloatRandomDefault *float64 `json:"nullableFloatRandomDefault"`
 }
 
 func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) MarshalJSON() ([]byte, error) {
@@ -635,6 +796,13 @@ func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) __premars
 	retval.NullableStringEmptyDefault = v.Team.NullableStringEmptyDefault
 	retval.NullableStringKnownDefault = v.Team.NullableStringKnownDefault
 	retval.NullableStringRandomDefault = v.Team.NullableStringRandomDefault
+	retval.FloatEmptyDefault = v.Team.FloatEmptyDefault
+	retval.FloatKnownDefault = v.Team.FloatKnownDefault
+	retval.FloatRandomDefault = v.Team.FloatRandomDefault
+	retval.NullableFloat = v.Team.NullableFloat
+	retval.NullableFloatEmptyDefault = v.Team.NullableFloatEmptyDefault
+	retval.NullableFloatKnownDefault = v.Team.NullableFloatKnownDefault
+	retval.NullableFloatRandomDefault = v.Team.NullableFloatRandomDefault
 	return &retval, nil
 }
 
@@ -730,6 +898,41 @@ func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetNull
 	return v.Team.NullableStringRandomDefault
 }
 
+// GetFloatEmptyDefault returns updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams.FloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetFloatEmptyDefault() float64 {
+	return v.Team.FloatEmptyDefault
+}
+
+// GetFloatKnownDefault returns updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams.FloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetFloatKnownDefault() float64 {
+	return v.Team.FloatKnownDefault
+}
+
+// GetFloatRandomDefault returns updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams.FloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetFloatRandomDefault() float64 {
+	return v.Team.FloatRandomDefault
+}
+
+// GetNullableFloat returns updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams.NullableFloat, and is useful for accessing the field via an interface.
+func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetNullableFloat() *float64 {
+	return v.Team.NullableFloat
+}
+
+// GetNullableFloatEmptyDefault returns updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams.NullableFloatEmptyDefault, and is useful for accessing the field via an interface.
+func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetNullableFloatEmptyDefault() *float64 {
+	return v.Team.NullableFloatEmptyDefault
+}
+
+// GetNullableFloatKnownDefault returns updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams.NullableFloatKnownDefault, and is useful for accessing the field via an interface.
+func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetNullableFloatKnownDefault() *float64 {
+	return v.Team.NullableFloatKnownDefault
+}
+
+// GetNullableFloatRandomDefault returns updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams.NullableFloatRandomDefault, and is useful for accessing the field via an interface.
+func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetNullableFloatRandomDefault() *float64 {
+	return v.Team.NullableFloatRandomDefault
+}
+
 func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) UnmarshalJSON(b []byte) error {
 
 	if string(b) == "null" {
@@ -781,6 +984,20 @@ type __premarshalupdateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams 
 	NullableStringKnownDefault *string `json:"nullableStringKnownDefault"`
 
 	NullableStringRandomDefault *string `json:"nullableStringRandomDefault"`
+
+	FloatEmptyDefault float64 `json:"floatEmptyDefault"`
+
+	FloatKnownDefault float64 `json:"floatKnownDefault"`
+
+	FloatRandomDefault float64 `json:"floatRandomDefault"`
+
+	NullableFloat *float64 `json:"nullableFloat"`
+
+	NullableFloatEmptyDefault *float64 `json:"nullableFloatEmptyDefault"`
+
+	NullableFloatKnownDefault *float64 `json:"nullableFloatKnownDefault"`
+
+	NullableFloatRandomDefault *float64 `json:"nullableFloatRandomDefault"`
 }
 
 func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) MarshalJSON() ([]byte, error) {
@@ -807,6 +1024,13 @@ func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) __prema
 	retval.NullableStringEmptyDefault = v.Team.NullableStringEmptyDefault
 	retval.NullableStringKnownDefault = v.Team.NullableStringKnownDefault
 	retval.NullableStringRandomDefault = v.Team.NullableStringRandomDefault
+	retval.FloatEmptyDefault = v.Team.FloatEmptyDefault
+	retval.FloatKnownDefault = v.Team.FloatKnownDefault
+	retval.FloatRandomDefault = v.Team.FloatRandomDefault
+	retval.NullableFloat = v.Team.NullableFloat
+	retval.NullableFloatEmptyDefault = v.Team.NullableFloatEmptyDefault
+	retval.NullableFloatKnownDefault = v.Team.NullableFloatKnownDefault
+	retval.NullableFloatRandomDefault = v.Team.NullableFloatRandomDefault
 	return &retval, nil
 }
 
@@ -839,6 +1063,13 @@ fragment Team on Teams {
 	nullableStringEmptyDefault
 	nullableStringKnownDefault
 	nullableStringRandomDefault
+	floatEmptyDefault
+	floatKnownDefault
+	floatRandomDefault
+	nullableFloat
+	nullableFloatEmptyDefault
+	nullableFloatKnownDefault
+	nullableFloatRandomDefault
 }
 `,
 		Variables: &__createTeamInput{
@@ -922,6 +1153,13 @@ fragment Team on Teams {
 	nullableStringEmptyDefault
 	nullableStringKnownDefault
 	nullableStringRandomDefault
+	floatEmptyDefault
+	floatKnownDefault
+	floatRandomDefault
+	nullableFloat
+	nullableFloatEmptyDefault
+	nullableFloatKnownDefault
+	nullableFloatRandomDefault
 }
 `,
 		Variables: &__getTeamInput{
@@ -972,6 +1210,13 @@ fragment Team on Teams {
 	nullableStringEmptyDefault
 	nullableStringKnownDefault
 	nullableStringRandomDefault
+	floatEmptyDefault
+	floatKnownDefault
+	floatRandomDefault
+	nullableFloat
+	nullableFloatEmptyDefault
+	nullableFloatKnownDefault
+	nullableFloatRandomDefault
 }
 `,
 		Variables: &__updateTeamInput{

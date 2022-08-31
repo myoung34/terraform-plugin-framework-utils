@@ -29,9 +29,16 @@ resource "test_team" "example" {
 
 - `bool_empty_default` (Boolean) Boolean with empty default. **Default** `false`.
 - `bool_known_default` (Boolean) Boolean with known default. **Default** `true`.
+- `float_empty_default` (Number) Float with empty default. **Default** ``.
+- `float_known_default` (Number) Float with known default. **Default** `One`.
+- `float_random_default` (Number) Float with random default.
 - `nullable_bool` (Boolean) Nullable boolean. **Default** `null`.
 - `nullable_bool_empty_default` (Boolean) Nullable boolean with empty default. **Default** `false`.
 - `nullable_bool_known_default` (Boolean) Nullable boolean with known default. **Default** `true`.
+- `nullable_float` (Number) Nullable float. **Default** `null`.
+- `nullable_float_empty_default` (Number) Nullable float with empty default. **Default** ``.
+- `nullable_float_known_default` (Number) Nullable float with known default. **Default** `Two`.
+- `nullable_float_random_default` (Number) Nullable float with random default.
 - `nullable_string` (String) Nullable string. **Default** `null`.
 - `nullable_string_empty_default` (String) Nullable string with empty default. **Default** ``.
 - `nullable_string_known_default` (String) Nullable string with known default. **Default** `Two`.

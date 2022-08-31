@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`string_random_default 1`] = `
+exports[`float_random_default 1`] = `
 "
 Terraform used the selected providers to generate the following execution
 plan. Resource actions are indicated with the following symbols:
@@ -35,7 +35,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_random_default 2`] = `
+exports[`float_random_default 2`] = `
 [
   {
     "instances": [
@@ -74,7 +74,7 @@ exports[`string_random_default 2`] = `
 ]
 `;
 
-exports[`string_random_default 3`] = `
+exports[`float_random_default 3`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 [0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
@@ -86,7 +86,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_random_default 4`] = `
+exports[`float_random_default 4`] = `
 [
   {
     "instances": [
@@ -125,7 +125,7 @@ exports[`string_random_default 4`] = `
 ]
 `;
 
-exports[`string_random_default 5`] = `
+exports[`float_random_default 5`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 Terraform used the selected providers to generate the following execution
@@ -136,8 +136,8 @@ Terraform will perform the following actions:
 
 [1m  # test_team.default[0m will be updated in-place[0m[0m
 [0m  [33m~[0m[0m resource "test_team" "default" {
+      [33m~[0m [0m[1m[0mfloat_random_default[0m[0m           = 5 [33m->[0m [0m0
         [1m[0mid[0m[0m                             = "default"
-      [31m-[0m [0m[1m[0mstring_random_default[0m[0m          = "random value" [90m->[0m [0m[90mnull[0m[0m
         [90m# (13 unchanged attributes hidden)[0m[0m
     }
 
@@ -149,7 +149,7 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_random_default 6`] = `
+exports[`float_random_default 6`] = `
 [
   {
     "instances": [
@@ -159,7 +159,7 @@ exports[`string_random_default 6`] = `
           "bool_known_default": true,
           "float_empty_default": 0,
           "float_known_default": 1,
-          "float_random_default": 5,
+          "float_random_default": 0,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
@@ -174,7 +174,7 @@ exports[`string_random_default 6`] = `
           "nullable_string_random_default": "random value",
           "string_empty_default": "",
           "string_known_default": "One",
-          "string_random_default": "",
+          "string_random_default": "random value",
         },
         "schema_version": 0,
         "sensitive_attributes": [],
@@ -188,7 +188,7 @@ exports[`string_random_default 6`] = `
 ]
 `;
 
-exports[`string_random_default 7`] = `
+exports[`float_random_default 7`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 [0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
@@ -200,7 +200,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_random_default 8`] = `
+exports[`float_random_default 8`] = `
 [
   {
     "instances": [
@@ -210,7 +210,7 @@ exports[`string_random_default 8`] = `
           "bool_known_default": true,
           "float_empty_default": 0,
           "float_known_default": 1,
-          "float_random_default": 5,
+          "float_random_default": 0,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
@@ -225,7 +225,7 @@ exports[`string_random_default 8`] = `
           "nullable_string_random_default": "random value",
           "string_empty_default": "",
           "string_known_default": "One",
-          "string_random_default": "",
+          "string_random_default": "random value",
         },
         "schema_version": 0,
         "sensitive_attributes": [],
@@ -239,7 +239,7 @@ exports[`string_random_default 8`] = `
 ]
 `;
 
-exports[`string_random_default 9`] = `
+exports[`float_random_default 9`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 Terraform used the selected providers to generate the following execution
@@ -250,8 +250,8 @@ Terraform will perform the following actions:
 
 [1m  # test_team.default[0m will be updated in-place[0m[0m
 [0m  [33m~[0m[0m resource "test_team" "default" {
+      [33m~[0m [0m[1m[0mfloat_random_default[0m[0m           = 0 [33m->[0m [0m7
         [1m[0mid[0m[0m                             = "default"
-      [32m+[0m [0m[1m[0mstring_random_default[0m[0m          = "Three"
         [90m# (13 unchanged attributes hidden)[0m[0m
     }
 
@@ -263,7 +263,7 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_random_default 10`] = `
+exports[`float_random_default 10`] = `
 [
   {
     "instances": [
@@ -273,7 +273,7 @@ exports[`string_random_default 10`] = `
           "bool_known_default": true,
           "float_empty_default": 0,
           "float_known_default": 1,
-          "float_random_default": 5,
+          "float_random_default": 7,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
@@ -288,7 +288,7 @@ exports[`string_random_default 10`] = `
           "nullable_string_random_default": "random value",
           "string_empty_default": "",
           "string_known_default": "One",
-          "string_random_default": "Three",
+          "string_random_default": "random value",
         },
         "schema_version": 0,
         "sensitive_attributes": [],
@@ -302,7 +302,7 @@ exports[`string_random_default 10`] = `
 ]
 `;
 
-exports[`string_random_default 11`] = `
+exports[`float_random_default 11`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 [0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
@@ -314,7 +314,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_random_default 12`] = `
+exports[`float_random_default 12`] = `
 [
   {
     "instances": [
@@ -324,7 +324,7 @@ exports[`string_random_default 12`] = `
           "bool_known_default": true,
           "float_empty_default": 0,
           "float_known_default": 1,
-          "float_random_default": 5,
+          "float_random_default": 7,
           "id": "default",
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
@@ -339,7 +339,7 @@ exports[`string_random_default 12`] = `
           "nullable_string_random_default": "random value",
           "string_empty_default": "",
           "string_known_default": "One",
-          "string_random_default": "Three",
+          "string_random_default": "random value",
         },
         "schema_version": 0,
         "sensitive_attributes": [],
@@ -353,7 +353,7 @@ exports[`string_random_default 12`] = `
 ]
 `;
 
-exports[`string_random_default 13`] = `
+exports[`float_random_default 13`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 Terraform used the selected providers to generate the following execution
@@ -368,7 +368,7 @@ Terraform will perform the following actions:
       [31m-[0m [0m[1m[0mbool_known_default[0m[0m             = true [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mfloat_empty_default[0m[0m            = 0 [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mfloat_known_default[0m[0m            = 1 [90m->[0m [0m[90mnull[0m[0m
-      [31m-[0m [0m[1m[0mfloat_random_default[0m[0m           = 5 [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mfloat_random_default[0m[0m           = 7 [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mid[0m[0m                             = "default" [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = false [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_bool_known_default[0m[0m    = true [90m->[0m [0m[90mnull[0m[0m
@@ -378,7 +378,7 @@ Terraform will perform the following actions:
       [31m-[0m [0m[1m[0mnullable_string_known_default[0m[0m  = "Two" [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_string_random_default[0m[0m = "random value" [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mstring_known_default[0m[0m           = "One" [90m->[0m [0m[90mnull[0m[0m
-      [31m-[0m [0m[1m[0mstring_random_default[0m[0m          = "Three" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mstring_random_default[0m[0m          = "random value" [90m->[0m [0m[90mnull[0m[0m
     }
 
 [0m[1mPlan:[0m 0 to add, 0 to change, 1 to destroy.

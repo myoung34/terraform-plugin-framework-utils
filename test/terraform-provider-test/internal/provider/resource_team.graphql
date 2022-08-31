@@ -5,6 +5,10 @@
 # @genqlient(for: "Teams.nullableStringEmptyDefault", pointer: true)
 # @genqlient(for: "Teams.nullableStringKnownDefault", pointer: true)
 # @genqlient(for: "Teams.nullableStringRandomDefault", pointer: true)
+# @genqlient(for: "Teams.nullableFloat", pointer: true)
+# @genqlient(for: "Teams.nullableFloatEmptyDefault", pointer: true)
+# @genqlient(for: "Teams.nullableFloatKnownDefault", pointer: true)
+# @genqlient(for: "Teams.nullableFloatRandomDefault", pointer: true)
 fragment Team on Teams {
   name
   boolEmptyDefault
@@ -19,6 +23,13 @@ fragment Team on Teams {
   nullableStringEmptyDefault
   nullableStringKnownDefault
   nullableStringRandomDefault
+  floatEmptyDefault
+  floatKnownDefault
+  floatRandomDefault
+  nullableFloat
+  nullableFloatEmptyDefault
+  nullableFloatKnownDefault
+  nullableFloatRandomDefault
 }
 
 query getTeam($name: String!) {
@@ -40,6 +51,11 @@ query getTeam($name: String!) {
 # @genqlient(for: "TeamsInsertInput.nullableStringEmptyDefault", pointer: true)
 # @genqlient(for: "TeamsInsertInput.nullableStringKnownDefault", pointer: true)
 # @genqlient(for: "TeamsInsertInput.nullableStringRandomDefault", omitempty: true, pointer: true)
+# @genqlient(for: "TeamsInsertInput.floatRandomDefault", omitempty: true, pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableFloat", pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableFloatEmptyDefault", pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableFloatKnownDefault", pointer: true)
+# @genqlient(for: "TeamsInsertInput.nullableFloatRandomDefault", omitempty: true, pointer: true)
 mutation createTeam(
   $input: TeamsInsertInput!
 ) {
@@ -59,6 +75,11 @@ mutation createTeam(
 # @genqlient(for: "TeamsUpdateInput.nullableStringEmptyDefault", pointer: true)
 # @genqlient(for: "TeamsUpdateInput.nullableStringKnownDefault", pointer: true)
 # @genqlient(for: "TeamsUpdateInput.nullableStringRandomDefault", omitempty: true, pointer: true)
+# @genqlient(for: "TeamsUpdateInput.floatRandomDefault", omitempty: true, pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableFloat", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableFloatEmptyDefault", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableFloatKnownDefault", pointer: true)
+# @genqlient(for: "TeamsUpdateInput.nullableFloatRandomDefault", omitempty: true, pointer: true)
 mutation updateTeam(
   $input: TeamsUpdateInput!,
   $name: String!
