@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`string_known_default 1`] = `
+exports[`nested_bool_empty_default 1`] = `
 "
 Terraform used the selected providers to generate the following execution
 plan. Resource actions are indicated with the following symbols:
@@ -38,7 +38,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_known_default 2`] = `
+exports[`nested_bool_empty_default 2`] = `
 [
   {
     "instances": [
@@ -80,7 +80,7 @@ exports[`string_known_default 2`] = `
 ]
 `;
 
-exports[`string_known_default 3`] = `
+exports[`nested_bool_empty_default 3`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 [0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
@@ -92,7 +92,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_known_default 4`] = `
+exports[`nested_bool_empty_default 4`] = `
 [
   {
     "instances": [
@@ -134,7 +134,7 @@ exports[`string_known_default 4`] = `
 ]
 `;
 
-exports[`string_known_default 5`] = `
+exports[`nested_bool_empty_default 5`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 [0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
@@ -146,7 +146,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_known_default 6`] = `
+exports[`nested_bool_empty_default 6`] = `
 [
   {
     "instances": [
@@ -188,7 +188,7 @@ exports[`string_known_default 6`] = `
 ]
 `;
 
-exports[`string_known_default 7`] = `
+exports[`nested_bool_empty_default 7`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 [0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
@@ -200,7 +200,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_known_default 8`] = `
+exports[`nested_bool_empty_default 8`] = `
 [
   {
     "instances": [
@@ -242,97 +242,19 @@ exports[`string_known_default 8`] = `
 ]
 `;
 
-exports[`string_known_default 9`] = `
+exports[`nested_bool_empty_default 9`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
-Terraform used the selected providers to generate the following execution
-plan. Resource actions are indicated with the following symbols:
-  [33m~[0m update in-place
-[0m
-Terraform will perform the following actions:
+[0m[1m[32mNo changes.[0m[1m Your infrastructure matches the configuration.[0m
 
-[1m  # test_team.default[0m will be updated in-place[0m[0m
-[0m  [33m~[0m[0m resource "test_team" "default" {
-        [1m[0mid[0m[0m                             = "default"
-      [33m~[0m [0m[1m[0mstring_known_default[0m[0m           = "One" [33m->[0m [0m"Three"
-        [90m# (14 unchanged attributes hidden)[0m[0m
-    }
-
-[0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.
-[0m[0m[1mtest_team.default: Modifying... [id=default][0m[0m
-[0m[1m[CLEANED] [id=default][0m
+[0mTerraform has compared your real infrastructure against your configuration
+and found no differences, so no changes are needed.
 [0m[1m[32m
-Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_known_default 10`] = `
-[
-  {
-    "instances": [
-      {
-        "attributes": {
-          "bool_empty_default": false,
-          "bool_known_default": true,
-          "float_empty_default": 0,
-          "float_known_default": 1,
-          "float_random_default": 5,
-          "id": "default",
-          "nested": {
-            "bool_empty_default": false,
-          },
-          "nullable_bool": null,
-          "nullable_bool_empty_default": false,
-          "nullable_bool_known_default": true,
-          "nullable_float": null,
-          "nullable_float_empty_default": 0,
-          "nullable_float_known_default": 2,
-          "nullable_float_random_default": 6,
-          "nullable_string": null,
-          "nullable_string_empty_default": "",
-          "nullable_string_known_default": "Two",
-          "nullable_string_random_default": "random value",
-          "string_empty_default": "",
-          "string_known_default": "Three",
-          "string_random_default": "random value",
-        },
-        "schema_version": 0,
-        "sensitive_attributes": [],
-      },
-    ],
-    "mode": "managed",
-    "name": "default",
-    "provider": "provider["local/local/test"]",
-    "type": "test_team",
-  },
-]
-`;
-
-exports[`string_known_default 11`] = `
-"[0m[1mtest_team.default: Refreshing state... [id=default][0m
-
-Terraform used the selected providers to generate the following execution
-plan. Resource actions are indicated with the following symbols:
-  [33m~[0m update in-place
-[0m
-Terraform will perform the following actions:
-
-[1m  # test_team.default[0m will be updated in-place[0m[0m
-[0m  [33m~[0m[0m resource "test_team" "default" {
-        [1m[0mid[0m[0m                             = "default"
-      [33m~[0m [0m[1m[0mstring_known_default[0m[0m           = "Three" [33m->[0m [0m"One"
-        [90m# (14 unchanged attributes hidden)[0m[0m
-    }
-
-[0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.
-[0m[0m[1mtest_team.default: Modifying... [id=default][0m[0m
-[0m[1m[CLEANED] [id=default][0m
-[0m[1m[32m
-Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
-[0m"
-`;
-
-exports[`string_known_default 12`] = `
+exports[`nested_bool_empty_default 10`] = `
 [
   {
     "instances": [
@@ -374,7 +296,7 @@ exports[`string_known_default 12`] = `
 ]
 `;
 
-exports[`string_known_default 13`] = `
+exports[`nested_bool_empty_default 11`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 Terraform used the selected providers to generate the following execution
@@ -386,7 +308,9 @@ Terraform will perform the following actions:
 [1m  # test_team.default[0m will be updated in-place[0m[0m
 [0m  [33m~[0m[0m resource "test_team" "default" {
         [1m[0mid[0m[0m                             = "default"
-      [31m-[0m [0m[1m[0mstring_known_default[0m[0m           = "One" [90m->[0m [0m[90mnull[0m[0m
+      [33m~[0m [0m[1m[0mnested[0m[0m                         = {
+          [33m~[0m [0m[1m[0mbool_empty_default[0m[0m = false [33m->[0m [0mtrue
+        }
         [90m# (14 unchanged attributes hidden)[0m[0m
     }
 
@@ -398,7 +322,7 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_known_default 14`] = `
+exports[`nested_bool_empty_default 12`] = `
 [
   {
     "instances": [
@@ -411,7 +335,7 @@ exports[`string_known_default 14`] = `
           "float_random_default": 5,
           "id": "default",
           "nested": {
-            "bool_empty_default": false,
+            "bool_empty_default": true,
           },
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
@@ -425,7 +349,7 @@ exports[`string_known_default 14`] = `
           "nullable_string_known_default": "Two",
           "nullable_string_random_default": "random value",
           "string_empty_default": "",
-          "string_known_default": "",
+          "string_known_default": "One",
           "string_random_default": "random value",
         },
         "schema_version": 0,
@@ -440,7 +364,7 @@ exports[`string_known_default 14`] = `
 ]
 `;
 
-exports[`string_known_default 15`] = `
+exports[`nested_bool_empty_default 13`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 Terraform used the selected providers to generate the following execution
@@ -452,7 +376,9 @@ Terraform will perform the following actions:
 [1m  # test_team.default[0m will be updated in-place[0m[0m
 [0m  [33m~[0m[0m resource "test_team" "default" {
         [1m[0mid[0m[0m                             = "default"
-      [32m+[0m [0m[1m[0mstring_known_default[0m[0m           = "One"
+      [33m~[0m [0m[1m[0mnested[0m[0m                         = {
+          [33m~[0m [0m[1m[0mbool_empty_default[0m[0m = true [33m->[0m [0mfalse
+        }
         [90m# (14 unchanged attributes hidden)[0m[0m
     }
 
@@ -464,7 +390,7 @@ Apply complete! Resources: 0 added, 1 changed, 0 destroyed.
 [0m"
 `;
 
-exports[`string_known_default 16`] = `
+exports[`nested_bool_empty_default 14`] = `
 [
   {
     "instances": [
@@ -506,7 +432,7 @@ exports[`string_known_default 16`] = `
 ]
 `;
 
-exports[`string_known_default 17`] = `
+exports[`nested_bool_empty_default 15`] = `
 "[0m[1mtest_team.default: Refreshing state... [id=default][0m
 
 Terraform used the selected providers to generate the following execution

@@ -31,6 +31,7 @@ type Team struct {
 	NullableFloatEmptyDefault   *float64 `json:"nullableFloatEmptyDefault"`
 	NullableFloatKnownDefault   *float64 `json:"nullableFloatKnownDefault"`
 	NullableFloatRandomDefault  *float64 `json:"nullableFloatRandomDefault"`
+	NestedBoolEmptyDefault      bool    `json:"nestedBoolEmptyDefault"`
 }
 
 // GetName returns Team.Name, and is useful for accessing the field via an interface.
@@ -93,20 +94,23 @@ func (v *Team) GetNullableFloatKnownDefault() *float64 { return v.NullableFloatK
 // GetNullableFloatRandomDefault returns Team.NullableFloatRandomDefault, and is useful for accessing the field via an interface.
 func (v *Team) GetNullableFloatRandomDefault() *float64 { return v.NullableFloatRandomDefault }
 
+// GetNestedBoolEmptyDefault returns Team.NestedBoolEmptyDefault, and is useful for accessing the field via an interface.
+func (v *Team) GetNestedBoolEmptyDefault() bool { return v.NestedBoolEmptyDefault }
+
 type TeamsInsertInput struct {
-	NullableString              *string  `json:"nullableString"`
-	BoolEmptyDefault            bool     `json:"boolEmptyDefault"`
-	BoolKnownDefault            bool     `json:"boolKnownDefault"`
-	StringKnownDefault          string   `json:"stringKnownDefault"`
-	NullableBool                *bool    `json:"nullableBool"`
-	NullableBoolEmptyDefault    *bool    `json:"nullableBoolEmptyDefault"`
-	NullableBoolKnownDefault    *bool    `json:"nullableBoolKnownDefault"`
-	NullableStringKnownDefault  *string  `json:"nullableStringKnownDefault"`
-	NullableStringRandomDefault *string  `json:"nullableStringRandomDefault,omitempty"`
-	Name                        string   `json:"name,omitempty"`
-	StringRandomDefault         *string  `json:"stringRandomDefault,omitempty"`
-	StringEmptyDefault          string   `json:"stringEmptyDefault"`
-	NullableStringEmptyDefault  *string  `json:"nullableStringEmptyDefault"`
+	NullableString              *string `json:"nullableString"`
+	BoolEmptyDefault            bool    `json:"boolEmptyDefault"`
+	BoolKnownDefault            bool    `json:"boolKnownDefault"`
+	StringKnownDefault          string  `json:"stringKnownDefault"`
+	NullableBool                *bool   `json:"nullableBool"`
+	NullableBoolEmptyDefault    *bool   `json:"nullableBoolEmptyDefault"`
+	NullableBoolKnownDefault    *bool   `json:"nullableBoolKnownDefault"`
+	NullableStringKnownDefault  *string `json:"nullableStringKnownDefault"`
+	NullableStringRandomDefault *string `json:"nullableStringRandomDefault,omitempty"`
+	Name                        string  `json:"name,omitempty"`
+	StringRandomDefault         *string `json:"stringRandomDefault,omitempty"`
+	StringEmptyDefault          string  `json:"stringEmptyDefault"`
+	NullableStringEmptyDefault  *string `json:"nullableStringEmptyDefault"`
 	FloatEmptyDefault           float64  `json:"floatEmptyDefault"`
 	FloatKnownDefault           float64  `json:"floatKnownDefault"`
 	NullableFloat               *float64 `json:"nullableFloat"`
@@ -114,6 +118,7 @@ type TeamsInsertInput struct {
 	NullableFloatKnownDefault   *float64 `json:"nullableFloatKnownDefault"`
 	FloatRandomDefault          *float64 `json:"floatRandomDefault,omitempty"`
 	NullableFloatRandomDefault  *float64 `json:"nullableFloatRandomDefault,omitempty"`
+	NestedBoolEmptyDefault      bool    `json:"nestedBoolEmptyDefault"`
 }
 
 // GetNullableString returns TeamsInsertInput.NullableString, and is useful for accessing the field via an interface.
@@ -188,20 +193,23 @@ func (v *TeamsInsertInput) GetNullableFloatRandomDefault() *float64 {
 	return v.NullableFloatRandomDefault
 }
 
+// GetNestedBoolEmptyDefault returns TeamsInsertInput.NestedBoolEmptyDefault, and is useful for accessing the field via an interface.
+func (v *TeamsInsertInput) GetNestedBoolEmptyDefault() bool { return v.NestedBoolEmptyDefault }
+
 type TeamsUpdateInput struct {
-	NullableString              *string  `json:"nullableString"`
-	BoolEmptyDefault            bool     `json:"boolEmptyDefault"`
-	BoolKnownDefault            bool     `json:"boolKnownDefault"`
-	StringKnownDefault          string   `json:"stringKnownDefault"`
-	NullableBool                *bool    `json:"nullableBool"`
-	NullableBoolEmptyDefault    *bool    `json:"nullableBoolEmptyDefault"`
-	NullableBoolKnownDefault    *bool    `json:"nullableBoolKnownDefault"`
-	NullableStringKnownDefault  *string  `json:"nullableStringKnownDefault"`
-	NullableStringRandomDefault *string  `json:"nullableStringRandomDefault,omitempty"`
-	Name                        string   `json:"name,omitempty"`
-	StringRandomDefault         *string  `json:"stringRandomDefault,omitempty"`
-	StringEmptyDefault          string   `json:"stringEmptyDefault"`
-	NullableStringEmptyDefault  *string  `json:"nullableStringEmptyDefault"`
+	NullableString              *string `json:"nullableString"`
+	BoolEmptyDefault            bool    `json:"boolEmptyDefault"`
+	BoolKnownDefault            bool    `json:"boolKnownDefault"`
+	StringKnownDefault          string  `json:"stringKnownDefault"`
+	NullableBool                *bool   `json:"nullableBool"`
+	NullableBoolEmptyDefault    *bool   `json:"nullableBoolEmptyDefault"`
+	NullableBoolKnownDefault    *bool   `json:"nullableBoolKnownDefault"`
+	NullableStringKnownDefault  *string `json:"nullableStringKnownDefault"`
+	NullableStringRandomDefault *string `json:"nullableStringRandomDefault,omitempty"`
+	Name                        string  `json:"name,omitempty"`
+	StringRandomDefault         *string `json:"stringRandomDefault,omitempty"`
+	StringEmptyDefault          string  `json:"stringEmptyDefault"`
+	NullableStringEmptyDefault  *string `json:"nullableStringEmptyDefault"`
 	FloatEmptyDefault           float64  `json:"floatEmptyDefault"`
 	FloatKnownDefault           float64  `json:"floatKnownDefault"`
 	NullableFloat               *float64 `json:"nullableFloat"`
@@ -209,6 +217,7 @@ type TeamsUpdateInput struct {
 	NullableFloatKnownDefault   *float64 `json:"nullableFloatKnownDefault"`
 	FloatRandomDefault          *float64 `json:"floatRandomDefault,omitempty"`
 	NullableFloatRandomDefault  *float64 `json:"nullableFloatRandomDefault,omitempty"`
+	NestedBoolEmptyDefault      bool    `json:"nestedBoolEmptyDefault"`
 }
 
 // GetNullableString returns TeamsUpdateInput.NullableString, and is useful for accessing the field via an interface.
@@ -282,6 +291,9 @@ func (v *TeamsUpdateInput) GetFloatRandomDefault() *float64 { return v.FloatRand
 func (v *TeamsUpdateInput) GetNullableFloatRandomDefault() *float64 {
 	return v.NullableFloatRandomDefault
 }
+
+// GetNestedBoolEmptyDefault returns TeamsUpdateInput.NestedBoolEmptyDefault, and is useful for accessing the field via an interface.
+func (v *TeamsUpdateInput) GetNestedBoolEmptyDefault() bool { return v.NestedBoolEmptyDefault }
 
 // __createTeamInput is used internally by genqlient
 type __createTeamInput struct {
@@ -435,6 +447,11 @@ func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) Get
 	return v.Team.NullableFloatRandomDefault
 }
 
+// GetNestedBoolEmptyDefault returns createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams.NestedBoolEmptyDefault, and is useful for accessing the field via an interface.
+func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) GetNestedBoolEmptyDefault() bool {
+	return v.Team.NestedBoolEmptyDefault
+}
+
 func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) UnmarshalJSON(b []byte) error {
 
 	if string(b) == "null" {
@@ -500,6 +517,8 @@ type __premarshalcreateTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTe
 	NullableFloatKnownDefault *float64 `json:"nullableFloatKnownDefault"`
 
 	NullableFloatRandomDefault *float64 `json:"nullableFloatRandomDefault"`
+
+	NestedBoolEmptyDefault bool `json:"nestedBoolEmptyDefault"`
 }
 
 func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) MarshalJSON() ([]byte, error) {
@@ -533,6 +552,7 @@ func (v *createTeamInsertIntoTeamsCollectionTeamsInsertResponseRecordsTeams) __p
 	retval.NullableFloatEmptyDefault = v.Team.NullableFloatEmptyDefault
 	retval.NullableFloatKnownDefault = v.Team.NullableFloatKnownDefault
 	retval.NullableFloatRandomDefault = v.Team.NullableFloatRandomDefault
+	retval.NestedBoolEmptyDefault = v.Team.NestedBoolEmptyDefault
 	return &retval, nil
 }
 
@@ -705,6 +725,11 @@ func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetNullab
 	return v.Team.NullableFloatRandomDefault
 }
 
+// GetNestedBoolEmptyDefault returns getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams.NestedBoolEmptyDefault, and is useful for accessing the field via an interface.
+func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) GetNestedBoolEmptyDefault() bool {
+	return v.Team.NestedBoolEmptyDefault
+}
+
 func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) UnmarshalJSON(b []byte) error {
 
 	if string(b) == "null" {
@@ -770,6 +795,8 @@ type __premarshalgetTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams st
 	NullableFloatKnownDefault *float64 `json:"nullableFloatKnownDefault"`
 
 	NullableFloatRandomDefault *float64 `json:"nullableFloatRandomDefault"`
+
+	NestedBoolEmptyDefault bool `json:"nestedBoolEmptyDefault"`
 }
 
 func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) MarshalJSON() ([]byte, error) {
@@ -803,6 +830,7 @@ func (v *getTeamTeamsCollectionTeamsConnectionEdgesTeamsEdgeNodeTeams) __premars
 	retval.NullableFloatEmptyDefault = v.Team.NullableFloatEmptyDefault
 	retval.NullableFloatKnownDefault = v.Team.NullableFloatKnownDefault
 	retval.NullableFloatRandomDefault = v.Team.NullableFloatRandomDefault
+	retval.NestedBoolEmptyDefault = v.Team.NestedBoolEmptyDefault
 	return &retval, nil
 }
 
@@ -933,6 +961,11 @@ func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetNull
 	return v.Team.NullableFloatRandomDefault
 }
 
+// GetNestedBoolEmptyDefault returns updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams.NestedBoolEmptyDefault, and is useful for accessing the field via an interface.
+func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) GetNestedBoolEmptyDefault() bool {
+	return v.Team.NestedBoolEmptyDefault
+}
+
 func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) UnmarshalJSON(b []byte) error {
 
 	if string(b) == "null" {
@@ -998,6 +1031,8 @@ type __premarshalupdateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams 
 	NullableFloatKnownDefault *float64 `json:"nullableFloatKnownDefault"`
 
 	NullableFloatRandomDefault *float64 `json:"nullableFloatRandomDefault"`
+
+	NestedBoolEmptyDefault bool `json:"nestedBoolEmptyDefault"`
 }
 
 func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) MarshalJSON() ([]byte, error) {
@@ -1031,6 +1066,7 @@ func (v *updateTeamUpdateTeamsCollectionTeamsUpdateResponseRecordsTeams) __prema
 	retval.NullableFloatEmptyDefault = v.Team.NullableFloatEmptyDefault
 	retval.NullableFloatKnownDefault = v.Team.NullableFloatKnownDefault
 	retval.NullableFloatRandomDefault = v.Team.NullableFloatRandomDefault
+	retval.NestedBoolEmptyDefault = v.Team.NestedBoolEmptyDefault
 	return &retval, nil
 }
 
@@ -1070,6 +1106,7 @@ fragment Team on Teams {
 	nullableFloatEmptyDefault
 	nullableFloatKnownDefault
 	nullableFloatRandomDefault
+	nestedBoolEmptyDefault
 }
 `,
 		Variables: &__createTeamInput{
@@ -1160,6 +1197,7 @@ fragment Team on Teams {
 	nullableFloatEmptyDefault
 	nullableFloatKnownDefault
 	nullableFloatRandomDefault
+	nestedBoolEmptyDefault
 }
 `,
 		Variables: &__getTeamInput{
@@ -1217,6 +1255,7 @@ fragment Team on Teams {
 	nullableFloatEmptyDefault
 	nullableFloatKnownDefault
 	nullableFloatRandomDefault
+	nestedBoolEmptyDefault
 }
 `,
 		Variables: &__updateTeamInput{

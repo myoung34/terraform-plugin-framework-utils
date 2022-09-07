@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
@@ -205,6 +206,34 @@ func (t teamResourceType) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Dia
 					resource.UseStateForUnknown(),
 				},
 			},
+			"nested": {
+				MarkdownDescription: "Nested block.",
+				Optional:            true,
+				Computed:            true,
+				PlanModifiers: tfsdk.AttributePlanModifiers{
+					modifiers.UnknownAttributesOnUnknown(),
+				},
+				Attributes: tfsdk.SingleNestedAttributes(map[string]tfsdk.Attribute{
+					"bool_empty_default": {
+						MarkdownDescription: "Bool with empty default. **Default** `false`.",
+						Type:                types.BoolType,
+						Optional:            true,
+						Computed:            true,
+						PlanModifiers: tfsdk.AttributePlanModifiers{
+							modifiers.DefaultBool(false),
+						},
+					},
+					// "bool_known_default": {
+					// 	MarkdownDescription: "Bool with known default. **Default** `true`.",
+					// 	Type:                types.BoolType,
+					// 	Optional:            true,
+					// 	Computed:            true,
+					// 	PlanModifiers: tfsdk.AttributePlanModifiers{
+					// 		modifiers.DefaultBool(true),
+					// 	},
+					// },
+				}),
+			},
 		},
 	}, nil
 }
@@ -238,6 +267,7 @@ type teamResourceData struct {
 	NullableFloatEmptyDefault   types.Float64 `tfsdk:"nullable_float_empty_default"`
 	NullableFloatKnownDefault   types.Float64 `tfsdk:"nullable_float_known_default"`
 	NullableFloatRandomDefault  types.Float64 `tfsdk:"nullable_float_random_default"`
+	Nested                      types.Object  `tfsdk:"nested"`
 }
 
 type teamResource struct {
@@ -253,8 +283,6 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 	if resp.Diagnostics.HasError() {
 		return
 	}
-
-	tflog.Warn(ctx, fmt.Sprintf("create %v", data))
 
 	input := TeamsInsertInput{
 		Name:               data.Name.Value,
@@ -318,7 +346,9 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 		input.NullableFloatRandomDefault = &data.NullableFloatRandomDefault.Value
 	}
 
-	tflog.Warn(ctx, fmt.Sprintf("create %v", input))
+	tflog.Warn(ctx, fmt.Sprintf("%v", data.Nested))
+
+	input.NestedBoolEmptyDefault = data.Nested.Attrs["bool_empty_default"].(types.Bool).Value
 
 	response, err := createTeam(context.Background(), r.provider.client, input)
 
@@ -382,6 +412,15 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 
 	if team.NullableFloatRandomDefault != nil {
 		data.NullableFloatRandomDefault = types.Float64{Value: float64(*team.NullableFloatRandomDefault)}
+	}
+
+	data.Nested = types.Object{
+		AttrTypes: map[string]attr.Type{
+			"bool_empty_default": types.BoolType,
+		},
+		Attrs: map[string]attr.Value{
+			"bool_empty_default": types.Bool{Value: team.NestedBoolEmptyDefault},
+		},
 	}
 
 	diags = resp.State.Set(ctx, &data)
@@ -460,6 +499,15 @@ func (r teamResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 
 	if team.NullableFloatRandomDefault != nil {
 		data.NullableFloatRandomDefault = types.Float64{Value: float64(*team.NullableFloatRandomDefault)}
+	}
+
+	data.Nested = types.Object{
+		AttrTypes: map[string]attr.Type{
+			"bool_empty_default": types.BoolType,
+		},
+		Attrs: map[string]attr.Value{
+			"bool_empty_default": types.Bool{Value: team.NestedBoolEmptyDefault},
+		},
 	}
 
 	diags = resp.State.Set(ctx, &data)
@@ -549,6 +597,8 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 		input.NullableFloatRandomDefault = &data.NullableFloatRandomDefault.Value
 	}
 
+	input.NestedBoolEmptyDefault = data.Nested.Attrs["bool_empty_default"].(types.Bool).Value
+
 	response, err := updateTeam(context.Background(), r.provider.client, input, state.Name.Value)
 
 	if err != nil {
@@ -611,6 +661,15 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 
 	if team.NullableFloatRandomDefault != nil {
 		data.NullableFloatRandomDefault = types.Float64{Value: float64(*team.NullableFloatRandomDefault)}
+	}
+
+	data.Nested = types.Object{
+		AttrTypes: map[string]attr.Type{
+			"bool_empty_default": types.BoolType,
+		},
+		Attrs: map[string]attr.Value{
+			"bool_empty_default": types.Bool{Value: team.NestedBoolEmptyDefault},
+		},
 	}
 
 	diags = resp.State.Set(ctx, &data)

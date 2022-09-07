@@ -207,6 +207,7 @@ type Teams {
   nullableFloatKnownDefault: String
   floatRandomDefault: String!
   nullableFloatRandomDefault: String
+  nestedBoolEmptyDefault: Boolean!
 }
 
 type TeamsConnection {
@@ -248,6 +249,7 @@ input TeamsFilter {
   nullableFloatKnownDefault: StringFilter
   floatRandomDefault: StringFilter
   nullableFloatRandomDefault: StringFilter
+  nestedBoolEmptyDefault: BooleanFilter
 }
 
 input TeamsInsertInput {
@@ -271,6 +273,7 @@ input TeamsInsertInput {
   nullableFloatKnownDefault: String
   floatRandomDefault: String
   nullableFloatRandomDefault: String
+  nestedBoolEmptyDefault: Boolean
 }
 
 type TeamsInsertResponse {
@@ -302,6 +305,7 @@ input TeamsOrderBy {
   nullableFloatKnownDefault: OrderByDirection
   floatRandomDefault: OrderByDirection
   nullableFloatRandomDefault: OrderByDirection
+  nestedBoolEmptyDefault: OrderByDirection
 }
 
 input TeamsUpdateInput {
@@ -325,6 +329,7 @@ input TeamsUpdateInput {
   nullableFloatKnownDefault: String
   floatRandomDefault: String
   nullableFloatRandomDefault: String
+  nestedBoolEmptyDefault: Boolean
 }
 
 type TeamsUpdateResponse {

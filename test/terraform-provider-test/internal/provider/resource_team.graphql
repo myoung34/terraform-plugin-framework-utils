@@ -30,6 +30,7 @@ fragment Team on Teams {
   nullableFloatEmptyDefault
   nullableFloatKnownDefault
   nullableFloatRandomDefault
+  nestedBoolEmptyDefault
 }
 
 query getTeam($name: String!) {

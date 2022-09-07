@@ -16,6 +16,9 @@ Terraform will perform the following actions:
       [32m+[0m [0m[1m[0mfloat_known_default[0m[0m            = 1
       [32m+[0m [0m[1m[0mfloat_random_default[0m[0m           = (known after apply)
       [32m+[0m [0m[1m[0mid[0m[0m                             = "default"
+      [32m+[0m [0m[1m[0mnested[0m[0m                         = {
+          [32m+[0m [0m[1m[0mbool_empty_default[0m[0m = false
+        }
       [32m+[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = false
       [32m+[0m [0m[1m[0mnullable_bool_known_default[0m[0m    = true
       [32m+[0m [0m[1m[0mnullable_float_empty_default[0m[0m   = 0
@@ -47,6 +50,9 @@ exports[`nullable_bool_empty_default 2`] = `
           "float_known_default": 1,
           "float_random_default": 5,
           "id": "default",
+          "nested": {
+            "bool_empty_default": false,
+          },
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
@@ -98,6 +104,9 @@ exports[`nullable_bool_empty_default 4`] = `
           "float_known_default": 1,
           "float_random_default": 5,
           "id": "default",
+          "nested": {
+            "bool_empty_default": false,
+          },
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
@@ -149,6 +158,9 @@ exports[`nullable_bool_empty_default 6`] = `
           "float_known_default": 1,
           "float_random_default": 5,
           "id": "default",
+          "nested": {
+            "bool_empty_default": false,
+          },
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
@@ -200,6 +212,9 @@ exports[`nullable_bool_empty_default 8`] = `
           "float_known_default": 1,
           "float_random_default": 5,
           "id": "default",
+          "nested": {
+            "bool_empty_default": false,
+          },
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
@@ -240,7 +255,7 @@ Terraform will perform the following actions:
 [0m  [33m~[0m[0m resource "test_team" "default" {
         [1m[0mid[0m[0m                             = "default"
       [33m~[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = false [33m->[0m [0mtrue
-        [90m# (13 unchanged attributes hidden)[0m[0m
+        [90m# (14 unchanged attributes hidden)[0m[0m
     }
 
 [0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.
@@ -263,6 +278,9 @@ exports[`nullable_bool_empty_default 10`] = `
           "float_known_default": 1,
           "float_random_default": 5,
           "id": "default",
+          "nested": {
+            "bool_empty_default": false,
+          },
           "nullable_bool": null,
           "nullable_bool_empty_default": true,
           "nullable_bool_known_default": true,
@@ -303,7 +321,7 @@ Terraform will perform the following actions:
 [0m  [33m~[0m[0m resource "test_team" "default" {
         [1m[0mid[0m[0m                             = "default"
       [33m~[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = true [33m->[0m [0mfalse
-        [90m# (13 unchanged attributes hidden)[0m[0m
+        [90m# (14 unchanged attributes hidden)[0m[0m
     }
 
 [0m[1mPlan:[0m 0 to add, 1 to change, 0 to destroy.
@@ -326,6 +344,9 @@ exports[`nullable_bool_empty_default 12`] = `
           "float_known_default": 1,
           "float_random_default": 5,
           "id": "default",
+          "nested": {
+            "bool_empty_default": false,
+          },
           "nullable_bool": null,
           "nullable_bool_empty_default": false,
           "nullable_bool_known_default": true,
@@ -370,6 +391,9 @@ Terraform will perform the following actions:
       [31m-[0m [0m[1m[0mfloat_known_default[0m[0m            = 1 [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mfloat_random_default[0m[0m           = 5 [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mid[0m[0m                             = "default" [90m->[0m [0m[90mnull[0m[0m
+      [31m-[0m [0m[1m[0mnested[0m[0m                         = {
+          [31m-[0m [0m[1m[0mbool_empty_default[0m[0m = false [90m->[0m [0m[90mnull[0m[0m
+        }
       [31m-[0m [0m[1m[0mnullable_bool_empty_default[0m[0m    = false [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_bool_known_default[0m[0m    = true [90m->[0m [0m[90mnull[0m[0m
       [31m-[0m [0m[1m[0mnullable_float_empty_default[0m[0m   = 0 [90m->[0m [0m[90mnull[0m[0m
