@@ -1,3 +1,8 @@
+## 0.1.3
+
+#### Enhancements
+* Added `UnknownAttributesOnUnknown` modifier
+
 ## 0.1.2
 
 #### Enhancements

@@ -13,6 +13,11 @@ Assuming that we have a field of a certain type (`int`, `boolean`, `string` etc.
 [^2]: This scenairo is impossible.
 [^3]: End users will not be able to set the value of the field as `null` in the server. This is a limitation on terraform itself.
 
+We also have more modifiers that helps with ergonomics.
+
+* [`UnknownAttributesOnUnknown`][]
+
+[`UnknownAttributesOnUnknown`]: #unknownattributesonunknown
 [`DefaultType`]: #defaulttype
 [`NullableType`]: #nullabletype
 [`UseStateForUnknown`]: #usestateforunknown
@@ -50,6 +55,14 @@ resource.UseStateForUnknown()
 ```
 
 **NOTE**: Make sure that you omit this property when sending payloads during both creation and updation.
+
+#### UnknownAttributesOnUnknown
+
+Use this when you have a nested block of `SingleNestedAttributes` and the block is fully optional.
+
+```go
+modifiers.UnknownAttributesOnUnknown()
+```
 
 ### Validators
 
