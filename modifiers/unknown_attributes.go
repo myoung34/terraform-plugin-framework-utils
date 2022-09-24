@@ -30,7 +30,8 @@ func (m unknownAttributesOnUnknownModifier) Modify(ctx context.Context, req tfsd
 
 	var object types.Object
 
-	resp.Diagnostics.Append(tfsdk.ValueAs(ctx, req.AttributePlan, &object)...)
+	diags := tfsdk.ValueAs(ctx, req.AttributePlan, &object)
+	resp.Diagnostics.Append(diags...)
 
 	if resp.Diagnostics.HasError() {
 		return

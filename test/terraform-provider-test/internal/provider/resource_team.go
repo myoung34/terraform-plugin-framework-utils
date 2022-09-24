@@ -246,6 +246,10 @@ func (t teamResourceType) NewResource(ctx context.Context, in provider.Provider)
 	}, diags
 }
 
+type nestedData struct {
+	BoolEmptyDefault types.Bool `tfsdk:"bool_empty_default"`
+}
+
 type teamResourceData struct {
 	Name                        types.String  `tfsdk:"id"`
 	BoolEmptyDefault            types.Bool    `tfsdk:"bool_empty_default"`
@@ -276,6 +280,7 @@ type teamResource struct {
 
 func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
 	var data teamResourceData
+	var nestedData nestedData
 
 	diags := req.Plan.Get(ctx, &data)
 	resp.Diagnostics.Append(diags...)
@@ -346,9 +351,14 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 		input.NullableFloatRandomDefault = &data.NullableFloatRandomDefault.Value
 	}
 
-	tflog.Warn(ctx, fmt.Sprintf("%v", data.Nested))
+	diags = data.Nested.As(ctx, &nestedData, types.ObjectAsOptions{})
+	resp.Diagnostics.Append(diags...)
 
-	input.NestedBoolEmptyDefault = data.Nested.Attrs["bool_empty_default"].(types.Bool).Value
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	input.NestedBoolEmptyDefault = nestedData.BoolEmptyDefault.Value
 
 	response, err := createTeam(context.Background(), r.provider.client, input)
 
@@ -516,6 +526,7 @@ func (r teamResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 
 func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
 	var data teamResourceData
+	var nestedData nestedData
 	var state teamResourceData
 
 	diags := req.Plan.Get(ctx, &data)
@@ -597,7 +608,14 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 		input.NullableFloatRandomDefault = &data.NullableFloatRandomDefault.Value
 	}
 
-	input.NestedBoolEmptyDefault = data.Nested.Attrs["bool_empty_default"].(types.Bool).Value
+	diags = data.Nested.As(ctx, &nestedData, types.ObjectAsOptions{})
+	resp.Diagnostics.Append(diags...)
+
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
+	input.NestedBoolEmptyDefault = nestedData.BoolEmptyDefault.Value
 
 	response, err := updateTeam(context.Background(), r.provider.client, input, state.Name.Value)
 
