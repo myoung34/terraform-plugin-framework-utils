@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/Khan/genqlient/graphql"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
-	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -16,14 +16,50 @@ import (
 	"github.com/terraform-community-providers/terraform-plugin-framework-utils/validators"
 )
 
-// Ensure provider defined types fully satisfy framework interfaces
-var _ provider.ResourceType = teamResourceType{}
-var _ resource.Resource = teamResource{}
-var _ resource.ResourceWithImportState = teamResource{}
+var _ resource.Resource = &TeamResource{}
+var _ resource.ResourceWithImportState = &TeamResource{}
 
-type teamResourceType struct{}
+func NewTeamResource() resource.Resource {
+	return &TeamResource{}
+}
 
-func (t teamResourceType) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
+type TeamResource struct {
+	client *graphql.Client
+}
+
+type TeamResourceNestedModel struct {
+	BoolEmptyDefault types.Bool `tfsdk:"bool_empty_default"`
+}
+
+type TeamResourceModel struct {
+	Name                        types.String  `tfsdk:"id"`
+	BoolEmptyDefault            types.Bool    `tfsdk:"bool_empty_default"`
+	BoolKnownDefault            types.Bool    `tfsdk:"bool_known_default"`
+	NullableBool                types.Bool    `tfsdk:"nullable_bool"`
+	NullableBoolEmptyDefault    types.Bool    `tfsdk:"nullable_bool_empty_default"`
+	NullableBoolKnownDefault    types.Bool    `tfsdk:"nullable_bool_known_default"`
+	StringEmptyDefault          types.String  `tfsdk:"string_empty_default"`
+	StringKnownDefault          types.String  `tfsdk:"string_known_default"`
+	StringRandomDefault         types.String  `tfsdk:"string_random_default"`
+	NullableString              types.String  `tfsdk:"nullable_string"`
+	NullableStringEmptyDefault  types.String  `tfsdk:"nullable_string_empty_default"`
+	NullableStringKnownDefault  types.String  `tfsdk:"nullable_string_known_default"`
+	NullableStringRandomDefault types.String  `tfsdk:"nullable_string_random_default"`
+	FloatEmptyDefault           types.Float64 `tfsdk:"float_empty_default"`
+	FloatKnownDefault           types.Float64 `tfsdk:"float_known_default"`
+	FloatRandomDefault          types.Float64 `tfsdk:"float_random_default"`
+	NullableFloat               types.Float64 `tfsdk:"nullable_float"`
+	NullableFloatEmptyDefault   types.Float64 `tfsdk:"nullable_float_empty_default"`
+	NullableFloatKnownDefault   types.Float64 `tfsdk:"nullable_float_known_default"`
+	NullableFloatRandomDefault  types.Float64 `tfsdk:"nullable_float_random_default"`
+	Nested                      types.Object  `tfsdk:"nested"`
+}
+
+func (r *TeamResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_team"
+}
+
+func (t *TeamResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagnostics) {
 	return tfsdk.Schema{
 		MarkdownDescription: "Test team.",
 		Attributes: map[string]tfsdk.Attribute{
@@ -238,49 +274,29 @@ func (t teamResourceType) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Dia
 	}, nil
 }
 
-func (t teamResourceType) NewResource(ctx context.Context, in provider.Provider) (resource.Resource, diag.Diagnostics) {
-	provider, diags := convertProviderType(in)
+func (r *TeamResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
+	// Prevent panic if the provider has not been configured.
+	if req.ProviderData == nil {
+		return
+	}
 
-	return teamResource{
-		provider: provider,
-	}, diags
+	client, ok := req.ProviderData.(*graphql.Client)
+
+	if !ok {
+		resp.Diagnostics.AddError(
+			"Unexpected Resource Configure Type",
+			fmt.Sprintf("Expected *graphql.Client, got: %T. Please report this issue to the provider developers.", req.ProviderData),
+		)
+
+		return
+	}
+
+	r.client = client
 }
 
-type nestedData struct {
-	BoolEmptyDefault types.Bool `tfsdk:"bool_empty_default"`
-}
-
-type teamResourceData struct {
-	Name                        types.String  `tfsdk:"id"`
-	BoolEmptyDefault            types.Bool    `tfsdk:"bool_empty_default"`
-	BoolKnownDefault            types.Bool    `tfsdk:"bool_known_default"`
-	NullableBool                types.Bool    `tfsdk:"nullable_bool"`
-	NullableBoolEmptyDefault    types.Bool    `tfsdk:"nullable_bool_empty_default"`
-	NullableBoolKnownDefault    types.Bool    `tfsdk:"nullable_bool_known_default"`
-	StringEmptyDefault          types.String  `tfsdk:"string_empty_default"`
-	StringKnownDefault          types.String  `tfsdk:"string_known_default"`
-	StringRandomDefault         types.String  `tfsdk:"string_random_default"`
-	NullableString              types.String  `tfsdk:"nullable_string"`
-	NullableStringEmptyDefault  types.String  `tfsdk:"nullable_string_empty_default"`
-	NullableStringKnownDefault  types.String  `tfsdk:"nullable_string_known_default"`
-	NullableStringRandomDefault types.String  `tfsdk:"nullable_string_random_default"`
-	FloatEmptyDefault           types.Float64 `tfsdk:"float_empty_default"`
-	FloatKnownDefault           types.Float64 `tfsdk:"float_known_default"`
-	FloatRandomDefault          types.Float64 `tfsdk:"float_random_default"`
-	NullableFloat               types.Float64 `tfsdk:"nullable_float"`
-	NullableFloatEmptyDefault   types.Float64 `tfsdk:"nullable_float_empty_default"`
-	NullableFloatKnownDefault   types.Float64 `tfsdk:"nullable_float_known_default"`
-	NullableFloatRandomDefault  types.Float64 `tfsdk:"nullable_float_random_default"`
-	Nested                      types.Object  `tfsdk:"nested"`
-}
-
-type teamResource struct {
-	provider testProvider
-}
-
-func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	var data teamResourceData
-	var nestedData nestedData
+func (r *TeamResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
+	var data *TeamResourceModel
+	var nestedData *TeamResourceNestedModel
 
 	diags := req.Plan.Get(ctx, &data)
 	resp.Diagnostics.Append(diags...)
@@ -360,7 +376,7 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 
 	input.NestedBoolEmptyDefault = nestedData.BoolEmptyDefault.Value
 
-	response, err := createTeam(context.Background(), r.provider.client, input)
+	response, err := createTeam(context.Background(), *r.client, input)
 
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to create team, got error: %s", err))
@@ -437,17 +453,16 @@ func (r teamResource) Create(ctx context.Context, req resource.CreateRequest, re
 	resp.Diagnostics.Append(diags...)
 }
 
-func (r teamResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	var data teamResourceData
+func (r *TeamResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data *TeamResourceModel
 
-	diags := req.State.Get(ctx, &data)
-	resp.Diagnostics.Append(diags...)
+	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	response, err := getTeam(context.Background(), r.provider.client, data.Name.Value)
+	response, err := getTeam(context.Background(), *r.client, data.Name.Value)
 
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to read team, got error: %s", err))
@@ -520,24 +535,21 @@ func (r teamResource) Read(ctx context.Context, req resource.ReadRequest, resp *
 		},
 	}
 
-	diags = resp.State.Set(ctx, &data)
-	resp.Diagnostics.Append(diags...)
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var data teamResourceData
-	var nestedData nestedData
-	var state teamResourceData
+func (r *TeamResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	var data *TeamResourceModel
+	var nestedData *TeamResourceNestedModel
+	var state *TeamResourceModel
 
-	diags := req.Plan.Get(ctx, &data)
-	resp.Diagnostics.Append(diags...)
+	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	diags = req.State.Get(ctx, &state)
-	resp.Diagnostics.Append(diags...)
+	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 
 	if resp.Diagnostics.HasError() {
 		return
@@ -608,8 +620,7 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 		input.NullableFloatRandomDefault = &data.NullableFloatRandomDefault.Value
 	}
 
-	diags = data.Nested.As(ctx, &nestedData, types.ObjectAsOptions{})
-	resp.Diagnostics.Append(diags...)
+	resp.Diagnostics.Append(data.Nested.As(ctx, &nestedData, types.ObjectAsOptions{})...)
 
 	if resp.Diagnostics.HasError() {
 		return
@@ -617,7 +628,7 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 
 	input.NestedBoolEmptyDefault = nestedData.BoolEmptyDefault.Value
 
-	response, err := updateTeam(context.Background(), r.provider.client, input, state.Name.Value)
+	response, err := updateTeam(context.Background(), *r.client, input, state.Name.Value)
 
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to update team, got error: %s", err))
@@ -690,21 +701,19 @@ func (r teamResource) Update(ctx context.Context, req resource.UpdateRequest, re
 		},
 	}
 
-	diags = resp.State.Set(ctx, &data)
-	resp.Diagnostics.Append(diags...)
+	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r teamResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var data teamResourceData
+func (r *TeamResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var data *TeamResourceModel
 
-	diags := req.State.Get(ctx, &data)
-	resp.Diagnostics.Append(diags...)
+	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	_, err := deleteTeam(context.Background(), r.provider.client, data.Name.Value)
+	_, err := deleteTeam(context.Background(), *r.client, data.Name.Value)
 
 	if err != nil {
 		resp.Diagnostics.AddError("Client Error", fmt.Sprintf("Unable to delete team, got error: %s", err))
@@ -714,6 +723,6 @@ func (r teamResource) Delete(ctx context.Context, req resource.DeleteRequest, re
 	tflog.Trace(ctx, "deleted a team")
 }
 
-func (r teamResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+func (r *TeamResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
 	resource.ImportStatePassthroughID(ctx, path.Root("id"), req, resp)
 }
