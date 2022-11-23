@@ -259,17 +259,18 @@ func (t *TeamResource) GetSchema(ctx context.Context) (tfsdk.Schema, diag.Diagno
 							modifiers.DefaultBool(false),
 						},
 					},
-					// "bool_known_default": {
-					// 	MarkdownDescription: "Bool with known default. **Default** `true`.",
-					// 	Type:                types.BoolType,
-					// 	Optional:            true,
-					// 	Computed:            true,
-					// 	PlanModifiers: tfsdk.AttributePlanModifiers{
-					// 		modifiers.DefaultBool(true),
-					// 	},
-					// },
 				}),
 			},
+			// "nested_list": {
+			// 	MarkdownDescription: "Nested block list.",
+			// 	Optional:            true,
+			// 	Computed:            true,
+			// 	PlanModifiers: tfsdk.AttributePlanModifiers{
+			// 		modifiers.UnknownAttributesOnUnknown(),
+			// 	},
+			// 	Attributes: tfsdk.ListNestedAttributes(map[string]tfsdk.Attribute{
+			// 	}),
+			// },
 		},
 	}, nil
 }
