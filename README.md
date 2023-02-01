@@ -32,6 +32,8 @@ modifiers.DefaultBool(true)
 modifiers.DefaultString("")
 
 modifiers.DefaultFloat(3)
+
+modifiers.DefaultInt(3)
 ```
 
 #### NullableType
@@ -44,6 +46,8 @@ modifiers.NullableBool()
 modifiers.NullableString()
 
 modifiers.NullableFloat()
+
+modifiers.NullableInt()
 ```
 
 #### UseStateForUnknown
