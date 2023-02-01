@@ -3,6 +3,7 @@ package modifiers
 import (
 	"context"
 	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -20,12 +21,16 @@ type defaultStringModifier struct {
 	Default *string
 }
 
-func (m defaultStringModifier) String() string {
+func (m defaultStringModifier) String() defaultStringModifier {
+	defaultStr := "null"
 	if m.Default == nil {
-		return "null"
+		return defaultStringModifier{
+			Default: &defaultStr,
+		}
 	}
-
-	return *m.Default
+	return defaultStringModifier{
+		Default: m.Default,
+	}
 }
 
 func (m defaultStringModifier) Description(ctx context.Context) string {
@@ -36,14 +41,17 @@ func (m defaultStringModifier) MarkdownDescription(ctx context.Context) string {
 	return fmt.Sprintf("If value is not configured, defaults to `%s`", m)
 }
 
-func (m defaultStringModifier) Modify(ctx context.Context, req tfsdk.ModifyAttributePlanRequest, resp *tfsdk.ModifyAttributePlanResponse) {
-	if !req.AttributeConfig.IsNull() {
+func (m defaultStringModifier) PlanModifyString(ctx context.Context, req planmodifier.StringRequest, resp *planmodifier.StringResponse) {
+	var str types.String
+	diags := tfsdk.ValueAs(ctx, req.PlanValue, &str)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
 		return
 	}
 
-	if m.Default == nil {
-		resp.AttributePlan = types.String{Null: true}
-	} else {
-		resp.AttributePlan = types.String{Value: *m.Default}
+	if !str.IsNull() {
+		return
 	}
+
+	resp.PlanValue = types.StringValue(*m.Default)
 }

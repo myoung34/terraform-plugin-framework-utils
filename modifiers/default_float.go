@@ -3,6 +3,7 @@ package modifiers
 import (
 	"context"
 	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -36,14 +37,17 @@ func (m defaultFloatModifier) MarkdownDescription(ctx context.Context) string {
 	return fmt.Sprintf("If value is not configured, defaults to `%s`", m)
 }
 
-func (m defaultFloatModifier) Modify(ctx context.Context, req tfsdk.ModifyAttributePlanRequest, resp *tfsdk.ModifyAttributePlanResponse) {
-	if !req.AttributeConfig.IsNull() {
+func (m defaultFloatModifier) PlanModifyFloat(ctx context.Context, req planmodifier.Float64Request, resp *planmodifier.Float64Response) {
+	var str types.Float64
+	diags := tfsdk.ValueAs(ctx, req.PlanValue, &str)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
 		return
 	}
 
-	if m.Default == nil {
-		resp.AttributePlan = types.Float64{Null: true}
-	} else {
-		resp.AttributePlan = types.Float64{Value: *m.Default}
+	if !str.IsNull() {
+		return
 	}
+
+	resp.PlanValue = types.Float64Value(*m.Default)
 }

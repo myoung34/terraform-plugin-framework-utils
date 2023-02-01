@@ -3,6 +3,7 @@ package modifiers
 import (
 	"context"
 	"fmt"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -36,14 +37,17 @@ func (m defaultBoolModifier) MarkdownDescription(ctx context.Context) string {
 	return fmt.Sprintf("If value is not configured, defaults to `%s`", m)
 }
 
-func (m defaultBoolModifier) Modify(ctx context.Context, req tfsdk.ModifyAttributePlanRequest, resp *tfsdk.ModifyAttributePlanResponse) {
-	if !req.AttributeConfig.IsNull() {
+func (m defaultBoolModifier) PlanModifyBool(ctx context.Context, req planmodifier.BoolRequest, resp *planmodifier.BoolResponse) {
+	var str types.Bool
+	diags := tfsdk.ValueAs(ctx, req.PlanValue, &str)
+	resp.Diagnostics.Append(diags...)
+	if diags.HasError() {
 		return
 	}
 
-	if m.Default == nil {
-		resp.AttributePlan = types.Bool{Null: true}
-	} else {
-		resp.AttributePlan = types.Bool{Value: *m.Default}
+	if !str.IsNull() {
+		return
 	}
+
+	resp.PlanValue = types.BoolValue(*m.Default)
 }
